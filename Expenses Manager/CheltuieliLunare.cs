@@ -12,13 +12,9 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class spt_values
+    public partial class CheltuieliLunare
     {
-        public string name { get; set; }
-        public int number { get; set; }
-        public string type { get; set; }
-        public Nullable<int> low { get; set; }
-        public Nullable<int> high { get; set; }
-        public Nullable<int> status { get; set; }
+        public Nullable<decimal> Bani { get; set; }
+        public string Tip { get; set; }
     }
 }

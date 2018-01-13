@@ -14,10 +14,12 @@ namespace Expenses_Manager
     
     public partial class Salarii
     {
-        public int ID_SALARIU { get; set; }
-        public Nullable<int> ID_ANGAJAT { get; set; }
-        public decimal Suma { get; set; }
-    
-        public virtual Angajati Angajati { get; set; }
+        public int ID_ANGAJAT { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public string Functie { get; set; }
+        public Nullable<double> Rating { get; set; }
+        public Nullable<decimal> Salariu { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
     }
 }

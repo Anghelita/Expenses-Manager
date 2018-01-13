@@ -10,15 +10,13 @@
 namespace Expenses_Manager
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MSreplication_options
+    public partial class sp_helpdiagrams_Result
     {
-        public string optname { get; set; }
-        public bool value { get; set; }
-        public int major_version { get; set; }
-        public int minor_version { get; set; }
-        public int revision { get; set; }
-        public int install_failures { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

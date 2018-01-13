@@ -18,8 +18,6 @@ namespace Expenses_Manager
         public Angajati()
         {
             this.State_de_plata = new HashSet<State_de_plata>();
-            this.Primes = new HashSet<Prime>();
-            this.Salariis = new HashSet<Salarii>();
             this.Comenzis = new HashSet<Comenzi>();
         }
     
@@ -27,17 +25,15 @@ namespace Expenses_Manager
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public string Adresa { get; set; }
-        public string Rating { get; set; }
+        public Nullable<double> Rating { get; set; }
         public string Functie { get; set; }
-        public Nullable<int> Activ { get; set; }
+        public string Username { get; set; }
+        public Nullable<bool> Activ { get; set; }
+        public string Hash { get; set; }
         public Nullable<int> ID_DEPARTAMENT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<State_de_plata> State_de_plata { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Prime> Primes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Salarii> Salariis { get; set; }
         public virtual Departamente Departamente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comenzi> Comenzis { get; set; }
