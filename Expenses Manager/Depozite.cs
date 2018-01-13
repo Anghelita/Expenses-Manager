@@ -22,7 +22,7 @@ namespace Expenses_Manager
     
         public int ID_DEPOZIT { get; set; }
         public string Adresa { get; set; }
-        public string Oras { get; set; }
+        public string Telefon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Achizitii> Achizitiis { get; set; }

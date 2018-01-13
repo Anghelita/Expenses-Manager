@@ -12,13 +12,13 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class MSreplication_options
+    public partial class SalariiCurente
     {
-        public string optname { get; set; }
-        public bool value { get; set; }
-        public int major_version { get; set; }
-        public int minor_version { get; set; }
-        public int revision { get; set; }
-        public int install_failures { get; set; }
+        public int ID_ANGAJAT { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public string Functie { get; set; }
+        public Nullable<double> Rating { get; set; }
+        public Nullable<decimal> Salariu { get; set; }
     }
 }

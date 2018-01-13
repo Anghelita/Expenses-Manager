@@ -12,13 +12,11 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class spt_values
+    public partial class FacturiEmise
     {
-        public string name { get; set; }
-        public int number { get; set; }
-        public string type { get; set; }
-        public Nullable<int> low { get; set; }
-        public Nullable<int> high { get; set; }
-        public Nullable<int> status { get; set; }
+        public int Nr { get; set; }
+        public Nullable<decimal> Bani { get; set; }
+        public string Observatii { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
     }
 }

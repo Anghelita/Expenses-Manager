@@ -12,16 +12,11 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class Plati_servicii
+    public partial class FacturiPrimite
     {
-        public int ID_PLATA { get; set; }
-        public Nullable<int> ID_UTILITATE { get; set; }
-        public Nullable<decimal> Suma { get; set; }
+        public int Nr { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
-        public Nullable<int> ID_SUCURSALA { get; set; }
-        public Nullable<int> ID_FACTURA { get; set; }
-    
-        public virtual Facturi Facturi { get; set; }
-        public virtual Utilitati Utilitati { get; set; }
+        public Nullable<decimal> Bani { get; set; }
+        public string Observatii { get; set; }
     }
 }

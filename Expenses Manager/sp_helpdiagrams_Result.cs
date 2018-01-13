@@ -10,16 +10,13 @@
 namespace Expenses_Manager
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Salarii
+    public partial class sp_helpdiagrams_Result
     {
-        public int ID_ANGAJAT { get; set; }
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
-        public string Functie { get; set; }
-        public Nullable<double> Rating { get; set; }
-        public Nullable<decimal> Salariu { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

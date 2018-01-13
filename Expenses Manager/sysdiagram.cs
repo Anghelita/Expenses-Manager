@@ -12,17 +12,12 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class spt_fallback_dev
+    public partial class sysdiagram
     {
-        public string xserver_name { get; set; }
-        public System.DateTime xdttm_ins { get; set; }
-        public System.DateTime xdttm_last_ins_upd { get; set; }
-        public Nullable<int> xfallback_low { get; set; }
-        public string xfallback_drive { get; set; }
-        public int low { get; set; }
-        public int high { get; set; }
-        public short status { get; set; }
         public string name { get; set; }
-        public string phyname { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

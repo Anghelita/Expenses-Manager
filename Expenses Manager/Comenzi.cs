@@ -22,14 +22,16 @@ namespace Expenses_Manager
     
         public int ID_COMANDA { get; set; }
         public Nullable<System.DateTime> Data_initiere { get; set; }
-        public Nullable<int> Status { get; set; }
+        public Nullable<int> ID_FACTURA { get; set; }
         public Nullable<int> ID_ANGAJAT { get; set; }
-        public string Data_estimata_livrare { get; set; }
+        public Nullable<System.DateTime> Data_estimata_livrare { get; set; }
+        public string Status { get; set; }
         public Nullable<int> ID_CLIENT { get; set; }
     
         public virtual Angajati Angajati { get; set; }
         public virtual Clienti Clienti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comanda_Detalii> Comanda_Detalii { get; set; }
+        public virtual Facturi Facturi { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace Expenses_Manager
         public Nullable<int> ID_PRODUS { get; set; }
         public Nullable<int> Numar_de_bucati { get; set; }
         public Nullable<int> ID_FACTURA { get; set; }
+        public Nullable<decimal> Pret_Unitar { get; set; }
         public Nullable<int> ID_DEPOZIT { get; set; }
         public Nullable<int> ID_FURNIZOR { get; set; }
     

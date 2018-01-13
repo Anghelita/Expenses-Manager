@@ -10,15 +10,11 @@
 namespace Expenses_Manager
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Prime
+    public partial class CalculateProfit_Result
     {
-        public int ID_PRIMA { get; set; }
-        public Nullable<int> ID_ANGAJAT { get; set; }
-        public string Descriere { get; set; }
-        public decimal Suma { get; set; }
-    
-        public virtual Angajati Angajati { get; set; }
+        public Nullable<decimal> Profit { get; set; }
+        public Nullable<decimal> Castiguri { get; set; }
+        public Nullable<decimal> Cheltuieli { get; set; }
     }
 }
