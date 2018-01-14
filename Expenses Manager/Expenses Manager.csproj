@@ -130,6 +130,12 @@
     <Compile Include="ComenziExtended.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComenziForm\ComenziForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComenziForm\ComenziForm.Designer.cs">
+      <DependentUpon>ComenziForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Departamente.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Adds\AddClientForm.resx">
       <DependentUpon>AddClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComenziForm\ComenziForm.resx">
+      <DependentUpon>ComenziForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

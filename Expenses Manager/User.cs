@@ -17,7 +17,7 @@ namespace Expenses_Manager
         public int ID_USER { get; set; }
         public Nullable<int> ID_ANGAJAT { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
     
         public virtual Angajati Angajati { get; set; }
     }
