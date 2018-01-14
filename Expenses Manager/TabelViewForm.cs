@@ -10,18 +10,17 @@ using System.Windows.Forms;
 
 namespace Expenses_Manager
 {
-    public partial class BucketListForm : Form
+    public partial class TabelViewForm : Form
     {
-        public List<Bucket> list;
-
-        public BucketListForm(List<Bucket> list)
+        public TabelViewForm(List<Achizitii> list)
         {
-            this.list = list;
-            InitializeComponent();           
             dataGridView1.DataSource = list;
+            InitializeComponent();
         }
 
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

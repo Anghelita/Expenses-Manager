@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HramulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HramulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Achizitii">
           <Key>
             <PropertyRef Name="ID_ACHIZITIE" />
@@ -132,6 +132,21 @@
           <Property Name="ID_ANGAJAT" Type="int" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="binary" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.AchizitiiExtended' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AchizitiiExtended">
+          <Key>
+            <PropertyRef Name="ID_ACHIZITIE" />
+            <PropertyRef Name="Numar Factura" />
+          </Key>
+          <Property Name="ID_ACHIZITIE" Type="int" Nullable="false" />
+          <Property Name="Nume Produs" Type="nvarchar" MaxLength="50" />
+          <Property Name="Numar de bucati" Type="int" />
+          <Property Name="Pret Unitar" Type="money" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa Depozit" Type="nvarchar" MaxLength="150" />
+          <Property Name="Numar Factura" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Hramul.dbo.AchizitiiExtended' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -628,8 +643,7 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HramulModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -647,7 +661,7 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           <NavigationProperty Name="Depozite" Relationship="Self.FK__Achizitii__ID_DE__5535A963" FromRole="Achizitii" ToRole="Depozite" />
           <NavigationProperty Name="Furnizori" Relationship="Self.FK__Achizitii__ID_FU__534D60F1" FromRole="Achizitii" ToRole="Furnizori" />
           <NavigationProperty Name="Facturi" Relationship="Self.FK__Cumparari__ID_FA__412EB0B6" FromRole="Achizitii" ToRole="Facturi" />
-          <NavigationProperty Name="Produse" Relationship="Self.FK__Cumparari__ID_PR__403A8C7D" FromRole="Achizitii" ToRole="Produse" />
+          <NavigationProperty Name="Produse" Relationship="HramulModel.FK__Cumparari__ID_PR__403A8C7D" FromRole="Achizitii" ToRole="Produse" />
         </EntityType>
         <EntityType Name="Angajati">
           <Key>
@@ -686,7 +700,7 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           <Property Name="Suma" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Cantitate" Type="Int32" />
           <NavigationProperty Name="Comenzi" Relationship="Self.FK_Comanda_Detalii_Comenzi" FromRole="Comanda_Detalii" ToRole="Comenzi" />
-          <NavigationProperty Name="Produse" Relationship="Self.FK_Comanda_Detalii_Produse" FromRole="Comanda_Detalii" ToRole="Produse" />
+          <NavigationProperty Name="Produse" Relationship="HramulModel.FK_Comanda_Detalii_Produse" FromRole="Comanda_Detalii" ToRole="Produse" />
         </EntityType>
         <EntityType Name="Comenzi">
           <Key>
@@ -742,17 +756,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CUI" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Achizitii__ID_FU__534D60F1" FromRole="Furnizori" ToRole="Achizitii" />
-        </EntityType>
-        <EntityType Name="Produse">
-          <Key>
-            <PropertyRef Name="ID_PRODUS" />
-          </Key>
-          <Property Name="ID_PRODUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Stoc" Type="Int32" />
-          <Property Name="Pret_Unitar" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Cumparari__ID_PR__403A8C7D" FromRole="Produse" ToRole="Achizitii" />
-          <NavigationProperty Name="Comanda_Detalii" Relationship="Self.FK_Comanda_Detalii_Produse" FromRole="Produse" ToRole="Comanda_Detalii" />
         </EntityType>
         <EntityType Name="State_de_plata">
           <Key>
@@ -927,18 +930,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cumparari__ID_PR__403A8C7D">
-          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
-          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produse">
-              <PropertyRef Name="ID_PRODUS" />
-            </Principal>
-            <Dependent Role="Achizitii">
-              <PropertyRef Name="ID_PRODUS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Plati_ang__ID_AN__45F365D3">
           <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
           <End Role="State_de_plata" Type="Self.State_de_plata" Multiplicity="*" />
@@ -1011,18 +1002,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Comanda_Detalii_Produse">
-          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
-          <End Role="Comanda_Detalii" Type="Self.Comanda_Detalii" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produse">
-              <PropertyRef Name="ID_PRODUS" />
-            </Principal>
-            <Dependent Role="Comanda_Detalii">
-              <PropertyRef Name="ID_PRODUS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Comenzi_Facturi">
           <End Role="Facturi" Type="Self.Facturi" Multiplicity="0..1" />
           <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
@@ -1045,7 +1024,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           <EntitySet Name="Depozites" EntityType="Self.Depozite" />
           <EntitySet Name="Facturis" EntityType="Self.Facturi" />
           <EntitySet Name="Furnizoris" EntityType="Self.Furnizori" />
-          <EntitySet Name="Produses" EntityType="Self.Produse" />
           <EntitySet Name="State_de_platas" EntityType="Self.State_de_plata" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -1071,10 +1049,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
             <End Role="Facturi" EntitySet="Facturis" />
             <End Role="Achizitii" EntitySet="Achizitiis" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cumparari__ID_PR__403A8C7D" Association="Self.FK__Cumparari__ID_PR__403A8C7D">
-            <End Role="Produse" EntitySet="Produses" />
-            <End Role="Achizitii" EntitySet="Achizitiis" />
-          </AssociationSet>
           <AssociationSet Name="FK__Plati_ang__ID_AN__45F365D3" Association="Self.FK__Plati_ang__ID_AN__45F365D3">
             <End Role="Angajati" EntitySet="Angajatis" />
             <End Role="State_de_plata" EntitySet="State_de_platas" />
@@ -1097,10 +1071,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           </AssociationSet>
           <AssociationSet Name="FK_Comanda_Detalii_Comenzi" Association="Self.FK_Comanda_Detalii_Comenzi">
             <End Role="Comenzi" EntitySet="Comenzis" />
-            <End Role="Comanda_Detalii" EntitySet="Comanda_Detaliis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comanda_Detalii_Produse" Association="Self.FK_Comanda_Detalii_Produse">
-            <End Role="Produse" EntitySet="Produses" />
             <End Role="Comanda_Detalii" EntitySet="Comanda_Detaliis" />
           </AssociationSet>
           <AssociationSet Name="FK_Comenzi_Facturi" Association="Self.FK_Comenzi_Facturi">
@@ -1165,6 +1135,22 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="AchizitiiExtendeds" EntityType="HramulModel.AchizitiiExtended" />
+          <EntitySet Name="ComenziEnhanceds" EntityType="HramulModel.ComenziEnhanced" />
+          <EntitySet Name="ComenziExtendeds" EntityType="HramulModel.ComenziExtended" />
+          <EntitySet Name="OrderDetailsExtendeds" EntityType="HramulModel.OrderDetailsExtended" />
+          <FunctionImport Name="IssueInvoice">
+          <Parameter Name="Invoice_Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Produses" EntityType="HramulModel.Produse" />
+          <AssociationSet Name="FK__Cumparari__ID_PR__403A8C7D" Association="HramulModel.FK__Cumparari__ID_PR__403A8C7D">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Achizitii" EntitySet="Achizitiis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comanda_Detalii_Produse" Association="HramulModel.FK_Comanda_Detalii_Produse">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Comanda_Detalii" EntitySet="Comanda_Detaliis" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="CalculateProfitOriginal_Result">
           <Property Type="Decimal" Name="Profit" Nullable="true" Precision="19" />
@@ -1182,6 +1168,92 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="AchizitiiExtended">
+          <Key>
+            <PropertyRef Name="ID_ACHIZITIE" />
+            <PropertyRef Name="Numar_Factura" />
+          </Key>
+          <Property Name="ID_ACHIZITIE" Type="Int32" Nullable="false" />
+          <Property Name="Nume_Produs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Numar_de_bucati" Type="Int32" />
+          <Property Name="Pret_Unitar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa_Depozit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Numar_Factura" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComenziEnhanced">
+          <Key>
+            <PropertyRef Name="ID_COMANDA" />
+            <PropertyRef Name="Numar_Factura" />
+            <PropertyRef Name="Angajat" />
+          </Key>
+          <Property Name="ID_COMANDA" Type="Int32" Nullable="false" />
+          <Property Name="Data_plasare_comanda" Type="DateTime" Precision="0" />
+          <Property Name="Data_estimata_livrare" Type="DateTime" Precision="0" />
+          <Property Name="Numar_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Angajat" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Destinatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComenziExtended">
+          <Key>
+            <PropertyRef Name="ID_COMANDA" />
+            <PropertyRef Name="Numar_Factura" />
+            <PropertyRef Name="Angajat" />
+          </Key>
+          <Property Name="ID_COMANDA" Type="Int32" Nullable="false" />
+          <Property Name="Data_plasare_comanda" Type="DateTime" Precision="0" />
+          <Property Name="Data_estimata_livrare" Type="DateTime" Precision="0" />
+          <Property Name="Numar_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Angajat" Type="String" Nullable="false" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Destinatar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="OrderDetailsExtended">
+          <Key>
+            <PropertyRef Name="ID_COMANDA_DETALII" />
+          </Key>
+          <Property Name="ID_COMANDA_DETALII" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMANDA" Type="Int32" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cantitate" Type="Int32" />
+          <Property Name="Subtotal" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="ID_PRODUS" />
+          </Key>
+          <Property Name="ID_PRODUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stoc" Type="Int32" />
+          <Property Name="Pret_Unitar" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Achizitiis" Relationship="HramulModel.FK__Cumparari__ID_PR__403A8C7D" FromRole="Produse" ToRole="Achizitii" />
+          <NavigationProperty Name="Comanda_Detalii" Relationship="HramulModel.FK_Comanda_Detalii_Produse" FromRole="Produse" ToRole="Comanda_Detalii" />
+        </EntityType>
+        <Association Name="FK__Cumparari__ID_PR__403A8C7D">
+          <End Type="HramulModel.Produse" Role="Produse" Multiplicity="0..1" />
+          <End Type="HramulModel.Achizitii" Role="Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comanda_Detalii_Produse">
+          <End Type="HramulModel.Produse" Role="Produse" Multiplicity="0..1" />
+          <End Type="HramulModel.Comanda_Detalii" Role="Comanda_Detalii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Comanda_Detalii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1284,16 +1356,6 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
                 <ScalarProperty Name="Nume" ColumnName="Nume" />
                 <ScalarProperty Name="Adresa" ColumnName="Adresa" />
                 <ScalarProperty Name="CUI" ColumnName="CUI" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produses">
-            <EntityTypeMapping TypeName="HramulModel.Produse">
-              <MappingFragment StoreEntitySet="Produse">
-                <ScalarProperty Name="ID_PRODUS" ColumnName="ID_PRODUS" />
-                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
-                <ScalarProperty Name="Stoc" ColumnName="Stoc" />
-                <ScalarProperty Name="Pret_Unitar" ColumnName="Pret Unitar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1479,6 +1541,67 @@ warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HramulModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HramulModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="AchizitiiExtendeds">
+            <EntityTypeMapping TypeName="HramulModel.AchizitiiExtended">
+              <MappingFragment StoreEntitySet="AchizitiiExtended">
+                <ScalarProperty Name="Numar_Factura" ColumnName="Numar Factura" />
+                <ScalarProperty Name="Adresa_Depozit" ColumnName="Adresa Depozit" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Pret_Unitar" ColumnName="Pret Unitar" />
+                <ScalarProperty Name="Numar_de_bucati" ColumnName="Numar de bucati" />
+                <ScalarProperty Name="Nume_Produs" ColumnName="Nume Produs" />
+                <ScalarProperty Name="ID_ACHIZITIE" ColumnName="ID_ACHIZITIE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComenziEnhanceds">
+            <EntityTypeMapping TypeName="HramulModel.ComenziEnhanced">
+              <MappingFragment StoreEntitySet="ComenziEnhanced">
+                <ScalarProperty Name="Destinatar" ColumnName="Destinatar" />
+                <ScalarProperty Name="Angajat" ColumnName="Angajat" />
+                <ScalarProperty Name="Numar_Factura" ColumnName="Numar Factura" />
+                <ScalarProperty Name="Data_estimata_livrare" ColumnName="Data estimata livrare" />
+                <ScalarProperty Name="Data_plasare_comanda" ColumnName="Data plasare comanda" />
+                <ScalarProperty Name="ID_COMANDA" ColumnName="ID_COMANDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComenziExtendeds">
+            <EntityTypeMapping TypeName="HramulModel.ComenziExtended">
+              <MappingFragment StoreEntitySet="ComenziExtended">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Destinatar" ColumnName="Destinatar" />
+                <ScalarProperty Name="Angajat" ColumnName="Angajat" />
+                <ScalarProperty Name="Numar_Factura" ColumnName="Numar Factura" />
+                <ScalarProperty Name="Data_estimata_livrare" ColumnName="Data estimata livrare" />
+                <ScalarProperty Name="Data_plasare_comanda" ColumnName="Data plasare comanda" />
+                <ScalarProperty Name="ID_COMANDA" ColumnName="ID_COMANDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetailsExtendeds">
+            <EntityTypeMapping TypeName="HramulModel.OrderDetailsExtended">
+              <MappingFragment StoreEntitySet="OrderDetailsExtended">
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="ID_COMANDA" ColumnName="ID_COMANDA" />
+                <ScalarProperty Name="ID_COMANDA_DETALII" ColumnName="ID_COMANDA_DETALII" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="IssueInvoice" FunctionName="HramulModel.Store.IssueInvoice" />
+          <EntitySetMapping Name="Produses">
+            <EntityTypeMapping TypeName="HramulModel.Produse">
+              <MappingFragment StoreEntitySet="Produse">
+                <ScalarProperty Name="Pret_Unitar" ColumnName="Pret Unitar" />
+                <ScalarProperty Name="Stoc" ColumnName="Stoc" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="ID_PRODUS" ColumnName="ID_PRODUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
