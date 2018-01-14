@@ -14,8 +14,6 @@ namespace Expenses_Manager
     {
         public TabelViewForm(List<Achizitii> list)
         {
-            dataGridView1.DataSource = list;
-            InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
