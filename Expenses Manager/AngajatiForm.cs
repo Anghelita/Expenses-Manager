@@ -16,10 +16,10 @@ namespace Expenses_Manager
         {
             InitializeComponent();
 
-            FillQuerries();
+            InitializeMyComponenets();
         }
 
-        private void FillQuerries()
+        private void InitializeMyComponenets()
         {
             using (var context = new HramulEntities())
             {
@@ -29,6 +29,8 @@ namespace Expenses_Manager
                               join s in context.State_de_platas
                               on a.ID_ANGAJAT equals s.ID_ANGAJAT
                               where s.TIP_PLATA.Equals("SALARIU")
+                              where s.Data.Value.Year == DateTime.Today.Year
+                              where s.Data.Value.Month == DateTime.Today.Month
                               orderby a.Nume
                               select new
                               {
@@ -46,10 +48,19 @@ namespace Expenses_Manager
 
                 tssNumarAngajati.Text = "Total Angajati: " +
                                          (from a in context.Angajatis
+                                          join s in context.State_de_platas
+                                          on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                                          where s.Data.Value.Year == DateTime.Today.Year
+                                          where s.Data.Value.Month == DateTime.Today.Month
+                                          where s.TIP_PLATA.Equals("SALARIU")
                                           select a).Count();
 
-                tssTotalSalarii.Text = "Total salarii: " + 
+                tssTotalSalarii.Text = "Total salarii: " +
                                         (from a in context.SalariiCurentes
+                                         join s in context.State_de_platas
+                                         on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                                         where s.Data.Value.Year == DateTime.Today.Year
+                                         where s.Data.Value.Month == DateTime.Today.Month
                                          select a.Salariu).Sum();
             }
         }
@@ -66,6 +77,8 @@ namespace Expenses_Manager
                                join s in context.State_de_platas
                                on a.ID_ANGAJAT equals s.ID_ANGAJAT
                                where s.TIP_PLATA.Equals("SALARIU")
+                               where s.Data.Value.Year == DateTime.Today.Year
+                               where s.Data.Value.Month == DateTime.Today.Month
                                where a.Nume.StartsWith(name)
                                orderby a.Nume
                                select new
@@ -108,6 +121,8 @@ namespace Expenses_Manager
                                join s in context.State_de_platas
                                on a.ID_ANGAJAT equals s.ID_ANGAJAT
                                where s.TIP_PLATA.Equals("SALARIU")
+                               where s.Data.Value.Year == DateTime.Today.Year
+                               where s.Data.Value.Month == DateTime.Today.Month
                                where a.Nume.StartsWith(name)
                                orderby a.Nume
                                select new
@@ -132,15 +147,84 @@ namespace Expenses_Manager
             Form form = new AdaugaAngajat();
             form.ShowDialog();
 
-            FillQuerries();
+            InitializeMyComponenets();
         }
 
+        private void menuItemSterge_Click(int id_angajat)
+        {
+            using (var context = new HramulEntities())
+            {
+
+                var angajat = (from a in context.Angajatis
+                                 where a.ID_ANGAJAT == id_angajat
+                                 select a).First();
+
+                if (angajat.Activ == true)
+                {
+                    angajat.Activ = false;
+                    MessageBox.Show("Angajatul a fost trecut inactiv");
+                }
+                else if(angajat.Activ == false)
+                {
+                    angajat.Activ = true;
+                    MessageBox.Show("Angajatul a fost trecut activ");
+                }
+
+                context.SaveChanges();
+
+                InitializeMyComponenets();
+            }
+        }
+
+        private void menuItemActualizeaza_Click(int id_angajat)
+        {
+            using (var context = new HramulEntities())
+            {
+                Form form = new ActualizeazaAngajat(id_angajat);
+                form.ShowDialog();
+
+                InitializeMyComponenets();
+            }
+        }
 
         private void dataGridView_MouseDown(object sender, MouseEventArgs e)
         {
-            int row = dataGridView.HitTest(e.X, e.Y).RowIndex;
-            var value = dataGridView.Rows[row].Cells[0].FormattedValue;
-            MessageBox.Show(value.ToString());
+            try
+            {
+                int row = dataGridView.HitTest(e.X, e.Y).RowIndex;
+                var id_angajat = int.Parse(dataGridView.Rows[row].Cells[0].FormattedValue.ToString());
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    using (var context = new HramulEntities())
+                    {
+                        var results = from s in context.State_de_platas
+                                      where s.ID_ANGAJAT == id_angajat
+                                      select new
+                                      {
+                                          s.ID_PLATA,
+                                          s.Suma,
+                                          s.TIP_PLATA,
+                                          s.Data
+                                      };
+
+                        dataGridViewState.DataSource = results.ToList();
+                    }
+                }
+
+                if(e.Button == MouseButtons.Right)
+                {
+                    ContextMenu menu = new ContextMenu();
+                    menu.MenuItems.Add(new MenuItem("Seteaza activ/inactiv", (s, ev) => menuItemSterge_Click(id_angajat)));
+                    menu.MenuItems.Add(new MenuItem("Actualizeaza", (s, ev) => menuItemActualizeaza_Click(id_angajat)));
+
+                    menu.Show(dataGridView, new Point(e.X, e.Y));
+                }
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show("Esti in afara numarului de randuri din grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

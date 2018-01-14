@@ -35,8 +35,10 @@
             this.tssNumarAngajati = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTotalSalarii = new System.Windows.Forms.ToolStripStatusLabel();
             this.btAdauga = new System.Windows.Forms.Button();
+            this.dataGridViewState = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewState)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -47,7 +49,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 38);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(860, 460);
+            this.dataGridView.Size = new System.Drawing.Size(700, 460);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseDown);
             // 
@@ -79,7 +81,7 @@
             this.tssTotalSalarii});
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1184, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -105,21 +107,33 @@
             this.btAdauga.UseVisualStyleBackColor = true;
             this.btAdauga.Click += new System.EventHandler(this.btAdauga_Click);
             // 
+            // dataGridViewState
+            // 
+            this.dataGridViewState.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewState.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewState.Location = new System.Drawing.Point(718, 38);
+            this.dataGridViewState.Name = "dataGridViewState";
+            this.dataGridViewState.Size = new System.Drawing.Size(454, 460);
+            this.dataGridViewState.TabIndex = 5;
+            // 
             // AngajatiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.dataGridViewState);
             this.Controls.Add(this.btAdauga);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btCauta);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AngajatiForm";
             this.Text = "AngajatiForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewState)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +148,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tssNumarAngajati;
         private System.Windows.Forms.ToolStripStatusLabel tssTotalSalarii;
         private System.Windows.Forms.Button btAdauga;
+        private System.Windows.Forms.DataGridView dataGridViewState;
     }
 }

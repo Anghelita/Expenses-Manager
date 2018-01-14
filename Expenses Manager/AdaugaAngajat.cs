@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,19 +18,25 @@ namespace Expenses_Manager
         {
             InitializeComponent();
 
+            InitializeMyComponents();
+        }
+
+
+        private void InitializeMyComponents()
+        {
             string[] rating = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
             cbRating.DataSource = rating;
 
             using (var context = new HramulEntities())
             {
                 var results = (from d in context.Departamentes
-                              select d.Denumire).ToList();
+                               select d.Denumire).ToList();
 
                 cbDepartament.DataSource = results;
             }
         }
 
-        private void btSalveaza_Click(object sender, EventArgs e)
+        protected void btSalveaza_Click(object sender, EventArgs e)
         {
             string nume=null, prenume=null, adresa=null, functie=null, denumire=null;
             decimal salariu=0;

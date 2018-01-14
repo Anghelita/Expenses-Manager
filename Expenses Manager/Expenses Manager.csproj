@@ -61,6 +61,12 @@
     <Compile Include="AchizitiiExtended.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="ActualizeazaAngajat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizeazaAngajat.Designer.cs">
+      <DependentUpon>ActualizeazaAngajat.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdaugaAngajat.cs">
       <SubType>Form</SubType>
     </Compile>

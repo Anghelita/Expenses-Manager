@@ -198,6 +198,7 @@
             this.Controls.Add(this.lbAdresa);
             this.Controls.Add(this.lbPrenume);
             this.Controls.Add(this.lbName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AdaugaAngajat";
             this.Text = "AdaugaAngajat";
             this.ResumeLayout(false);
@@ -207,20 +208,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.Label lbPrenume;
-        private System.Windows.Forms.Label lbAdresa;
-        private System.Windows.Forms.Label lbRating;
-        private System.Windows.Forms.Label lbFunctie;
-        private System.Windows.Forms.Label lbDepartament;
-        private System.Windows.Forms.TextBox tbNume;
-        private System.Windows.Forms.TextBox tbPrenume;
-        private System.Windows.Forms.TextBox tbAdresa;
-        private System.Windows.Forms.TextBox tbFunctie;
-        private System.Windows.Forms.ComboBox cbDepartament;
-        private System.Windows.Forms.Label lbSalariu;
-        private System.Windows.Forms.TextBox tbSalariu;
-        private System.Windows.Forms.Button btSalveaza;
-        private System.Windows.Forms.ComboBox cbRating;
+        protected System.Windows.Forms.Label lbName;
+        protected System.Windows.Forms.Label lbPrenume;
+        protected System.Windows.Forms.Label lbAdresa;
+        protected System.Windows.Forms.Label lbRating;
+        protected System.Windows.Forms.Label lbFunctie;
+        protected System.Windows.Forms.Label lbDepartament;
+        protected System.Windows.Forms.TextBox tbNume;
+        protected System.Windows.Forms.TextBox tbPrenume;
+        protected System.Windows.Forms.TextBox tbAdresa;
+        protected System.Windows.Forms.TextBox tbFunctie;
+        protected System.Windows.Forms.ComboBox cbDepartament;
+        protected System.Windows.Forms.Label lbSalariu;
+        protected System.Windows.Forms.TextBox tbSalariu;
+        protected System.Windows.Forms.Button btSalveaza;
+        protected System.Windows.Forms.ComboBox cbRating;
     }
 }
