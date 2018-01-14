@@ -4,35 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b8f767b26b040ccbc63877ba69f7827" Name="Diagram1" ZoomLevel="126">
+      <Diagram DiagramId="443deb4952dc4c09b2a0c6e08d3cd7fc" Name="Diagram1">
         <EntityTypeShape EntityType="HramulModel.Achizitii" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HramulModel.Angajati" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HramulModel.Clienti" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HramulModel.Angajati" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HramulModel.Clienti" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Comanda_Detalii" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Comenzi" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Departamente" Width="1.5" PointX="1.5" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Depozite" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Facturi" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Furnizori" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HramulModel.Produse" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HramulModel.State_de_plata" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HramulModel.State_de_plata" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HramulModel.User" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Cheltuieli" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.CheltuieliLunare" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.FacturiEmise" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.FacturiPrimite" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HramulModel.Salarii" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HramulModel.SalariiCurente" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="HramulModel.FK__Achizitii__ID_DE__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK__Achizitii__ID_FU__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK__Cumparari__ID_FA__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="HramulModel.FK__Cumparari__ID_PR__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK__Plati_ang__ID_AN__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK_Angajati_Departamente" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK_Comenzi_Angajati" ManuallyRouted="false" />
+        <AssociationConnector Association="HramulModel.FK_Users_Angajati" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK__Vanzari__ID_CLIE__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK_Comanda_Detalii_Comenzi" ManuallyRouted="false" />
-        <AssociationConnector Association="HramulModel.FK_Comanda_Detalii_Produse" ManuallyRouted="false" />
         <AssociationConnector Association="HramulModel.FK_Comenzi_Facturi" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HramulModel.AchizitiiExtended" Width="1.5" PointX="8.375" PointY="10.75" />
+        <EntityTypeShape EntityType="HramulModel.ComenziEnhanced" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="HramulModel.ComenziExtended" Width="1.5" PointX="10.375" PointY="10.75" />
+        <EntityTypeShape EntityType="HramulModel.OrderDetailsExtended" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="HramulModel.Produse" Width="1.5" PointX="1.5" PointY="10.5" />
+        <AssociationConnector Association="HramulModel.FK__Cumparari__ID_PR__403A8C7D" />
+        <AssociationConnector Association="HramulModel.FK_Comanda_Detalii_Produse" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6B0D2BB-A603-4A1B-829A-CD1CFAAF0C15}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Expenses_Manager</RootNamespace>
+    <AssemblyName>Expenses Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Achizitii.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Angajati.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AngajatiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AngajatiForm.Designer.cs">
+      <DependentUpon>AngajatiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalculateProfit_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cheltuieli.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheltuieliLunare.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clienti.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comanda_Detalii.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comenzi.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Departamente.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Depozite.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Facturi.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacturiEmise.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FacturiPrimite.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Furnizori.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produse.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salarii.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalariiCurente.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State_de_plata.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AngajatiForm.resx">
+      <DependentUpon>AngajatiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataModel.edmx.diagram">
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

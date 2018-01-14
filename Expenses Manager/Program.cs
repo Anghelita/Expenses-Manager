@@ -18,6 +18,10 @@ namespace Expenses_Manager
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new MainForm());
+<<<<<<< HEAD
+            //Application.Run(new AchizitiiForm());
+=======
+>>>>>>> avram_branch
         }
     }
 }
