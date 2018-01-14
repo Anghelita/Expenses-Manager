@@ -17,7 +17,7 @@ namespace Expenses_Manager
         public BucketListForm(List<Bucket> list)
         {
             this.list = list;
-            InitializeComponent();           
+            InitializeComponent();
             dataGridView1.DataSource = list;
         }
 

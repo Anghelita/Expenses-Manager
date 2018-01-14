@@ -28,7 +28,8 @@ namespace Expenses_Manager
                 MessageBox.Show("Introduceti un nume pentru produs!");
                 return;
             }
-            if (!decimal.TryParse(textBox2.Text, out decimal q))
+            decimal q;
+            if (!decimal.TryParse(textBox2.Text, out q))
             {
                 MessageBox.Show("Introduceti un pret unitar pentru produs!");
                 return;

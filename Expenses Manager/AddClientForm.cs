@@ -34,7 +34,9 @@ namespace Expenses_Manager
                 MessageBox.Show("Introduceti o adresa pentu client!");
                 return;
             }
-            if (!int.TryParse(numarTelefonTextBox.Text, out int q))
+            int q;
+
+            if (!int.TryParse(numarTelefonTextBox.Text, out q))
             {
                 MessageBox.Show("Numar bucati gresit!");
                 return;

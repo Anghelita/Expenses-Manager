@@ -28,7 +28,9 @@ namespace Expenses_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(numarTextBox.Text, out int a))
+            int a;
+
+            if (!int.TryParse(numarTextBox.Text, out a))
             {
                 MessageBox.Show("Numarul Facuturii nu este corect!");
                 return;
