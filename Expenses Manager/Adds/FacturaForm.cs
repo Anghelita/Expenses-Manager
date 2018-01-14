@@ -35,7 +35,7 @@ namespace Expenses_Manager
             }
             Date = dateTimePicker.Text;
             number = Convert.ToInt32(numarTextBox.Text);
-            Tip = numarTextBox.Text;
+            Tip = "ITU";
             Observatii = observatiiTextBox.Text;
 
             Canceled = false;
