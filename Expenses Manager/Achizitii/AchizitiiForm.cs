@@ -36,6 +36,9 @@ namespace Expenses_Manager
             refresh();
             refresh();
 
+            loadNumeProduse();
+
+
             var Depozite = from c in context.Depozites
                            select c.Adresa;
             foreach (String item in Depozite.ToArray())
@@ -82,7 +85,7 @@ namespace Expenses_Manager
 
         private void adaugaProdusButton_Click(object sender, EventArgs e)
         {
-            if (numeProdusTextBox.Text.Equals(""))
+            if (numeProdusComboBox.Text.Equals(""))
             {
                 MessageBox.Show("Introduceti un nume pentru produs!");
                 return;
@@ -92,9 +95,14 @@ namespace Expenses_Manager
                 MessageBox.Show("Numar bucati gresit!");
                 return;
             }
-            if (!int.TryParse(pretUnitatetextBox.Text, out int n))
+            if (!decimal.TryParse(cumparareUnitateTextBox.Text, out decimal n))
             {
-                MessageBox.Show("Pret unitate gresit!");
+                MessageBox.Show("Pret cumparare pe unitate gresit!");
+                return;
+            }
+            if (!decimal.TryParse(VanzareUnitateComboBox1.Text, out decimal m))
+            {
+                MessageBox.Show("Pret vanzare pe unitate gresit!");
                 return;
             }
 
@@ -116,16 +124,17 @@ namespace Expenses_Manager
 
             localbucket.Add(new Bucket()
             {
-                NumeProdus = numeProdusTextBox.Text,
-                NumarBicati = Convert.ToInt16(numarBucatiTextBox.Text),
-                PretUnimate = Convert.ToInt16(pretUnitatetextBox.Text),
+                NumeProdus = numeProdusComboBox.Text,
+                NumarBucati = Convert.ToInt16(numarBucatiTextBox.Text),
+                PretCumparare = Convert.ToDecimal(cumparareUnitateTextBox.Text),
+                PretVanzare = Convert.ToDecimal(VanzareUnitateComboBox1.Text),
                 Depozit = depozitComboBox.Text,
                 Furnizor = furnizorComboBox.Text
             });
 
-            numeProdusTextBox.Text = "";
+            numeProdusComboBox.Text = "";
             numarBucatiTextBox.Text = "";
-            pretUnitatetextBox.Text = "";
+            VanzareUnitateComboBox1.Text = "";
             depozitComboBox.Text = "";
             furnizorComboBox.Text = "";
 
@@ -136,12 +145,128 @@ namespace Expenses_Manager
         {
             Produse produse = new Produse()
             {
-                Denumire = numeProdusTextBox.Text,
-                Pret_Unitar = Convert.ToInt16(pretUnitatetextBox.Text),
+                Denumire = numeProdusComboBox.Text,
+                Pret_Unitar = Convert.ToDecimal(VanzareUnitateComboBox1.Text),
                 Stoc = Convert.ToInt16(numarBucatiTextBox.Text)
-
             };
             return produse;
+        }
+
+        private void adaugaAchizitie()
+        {
+            Facturi facturi = new Facturi();
+
+            Produse produse = new Produse();
+            Depozite depozite = new Depozite();
+            Furnizori furnizori = new Furnizori();
+
+
+            FacturaForm facturaForm = new FacturaForm(localbucket);
+            facturaForm.ShowDialog();
+            if (facturaForm.Canceled == true)
+                return;
+
+            facturi = new Facturi()
+            {
+                Data = Convert.ToDateTime(facturaForm.Date),
+                Nr = facturaForm.number,
+                Tip = facturaForm.Tip,
+                Observatii = facturaForm.Observatii
+            };
+            context.Facturis.Add(facturi);
+            context.SaveChanges();
+            context.SaveChanges();
+            context.SaveChanges();
+
+            foreach (var item in localbucket)
+            {
+                if (!context.Produses.Any(o => o.Denumire.Equals(item.NumeProdus)))
+                {
+                    context.Produses.Add(new Produse()
+                    {
+                        Denumire = item.NumeProdus,
+                        Pret_Unitar = item.PretVanzare,
+                        Stoc = item.NumarBucati,
+                    });
+                }
+                else
+                {
+                    var resoult = (from c in context.Produses
+                                   where c.Denumire == item.NumeProdus
+                                   select c).First();
+                    resoult.Stoc += item.NumarBucati;
+                    resoult.Pret_Unitar = item.PretVanzare;
+                }
+                context.SaveChanges();
+
+
+                if (!context.Depozites.Any(o => o.Adresa.Equals(item.Depozit)))
+                {
+                    if (!localDepozite.Any(o => o.Adresa.Equals(item.Depozit)))
+                    {
+                        while (!this.adaugaDepozit(item.Depozit)) ;
+                    }
+
+                    foreach (var i in localDepozite)
+                    {
+                        if (i.Adresa.Equals(item.Depozit))
+                        {
+                            context.Depozites.Add(i);
+                            break;
+                        }
+                    }
+                }
+                context.SaveChanges();
+
+                if (!context.Furnizoris.Any(o => o.Nume.Equals(item.Furnizor)))
+                {
+                    if (!localFurnizori.Any(o => o.Nume.Equals(item.Furnizor)))
+                    {
+                        while (!this.adaugaFurnizor(item.Furnizor)) ;
+                    }
+
+                    foreach (var i in localFurnizori)
+                    {
+                        if (i.Nume.Equals(item.Furnizor))
+                        {
+                            context.Furnizoris.Add(i);
+                            break;
+                        }
+                    }
+                }
+                context.SaveChanges();
+
+                produse = (from c in context.Produses
+                           where c.Denumire == item.NumeProdus && c.Pret_Unitar == item.PretVanzare
+                           select c).First();
+                depozite = (from c in context.Depozites
+                            where c.Adresa == item.Depozit
+                            select c).First();
+                furnizori = (from c in context.Furnizoris
+                             where c.Nume == item.Furnizor
+                             select c).First();
+                facturi = (from c in context.Facturis
+                           where c.Nr == facturi.Nr && c.Data == facturi.Data
+                           select c).First();
+
+                context.Achizitiis.Add(new Achizitii()
+                {
+                    ID_PRODUS = produse.ID_PRODUS,
+                    Numar_de_bucati = item.NumarBucati,
+                    Pret_Unitar = item.PretCumparare,
+                    ID_DEPOZIT = depozite.ID_DEPOZIT,
+                    ID_FURNIZOR = furnizori.ID_FURNIZOR,
+                    ID_FACTURA = facturi.ID_FACTURA
+                });
+                context.SaveChanges();
+
+            }
+            localFurnizori.Clear();
+            localDepozite.Clear();
+            localbucket.Clear();
+            localProduse.Clear();
+            refresh();
+
         }
 
         private void loadDepozit()
@@ -170,6 +295,10 @@ namespace Expenses_Manager
         private bool adaugaDepozit(String txt)
         {
             AddDepozit addDepozit = new AddDepozit(txt);
+            if (txt.Equals(""))
+            {
+                addDepozit.SetAdressChangeable();
+            }
             addDepozit.ShowDialog();
             if (!addDepozit.getChanged())
                 return false;
@@ -210,6 +339,10 @@ namespace Expenses_Manager
         private bool adaugaFurnizor(String txt)
         {
             AddFurnizor addFurnizor = new AddFurnizor(txt);
+            if (txt.Equals(""))
+            {
+                addFurnizor.SetNameChangeable();
+            }
             addFurnizor.ShowDialog();
             if (!addFurnizor.getChanged())
                 return false;
@@ -222,121 +355,58 @@ namespace Expenses_Manager
             return true;
         }
 
+        private void loadNumeProduse()
+        {
+            List<String> list = new List<string>();
+            var iq = (from c in context.Produses
+                      select c.Denumire).Distinct().ToList();
+            foreach (var item in iq)
+            {
+                list.Add(item);
+            }
+
+            numeProdusComboBox.Items.Clear();
+            numeProdusComboBox.ResetText();
+
+            foreach (var item in list)
+            {
+                numeProdusComboBox.Items.Add(item);
+            }
+        }
+
+        private void loadPretVanzare(String selected)
+        {
+            List<decimal?> list = new List<decimal?>();
+            var iq = (from c in context.Produses
+                      where c.Denumire.Equals(selected)
+                      select c).ToList();
+            foreach (var item in iq)
+            {
+                list.Add(item.Pret_Unitar);
+            }
+
+            foreach (var item in localProduse)
+            {
+                list.Add(item.Pret_Unitar);
+            }
+
+            VanzareUnitateComboBox1.Items.Clear();
+            VanzareUnitateComboBox1.ResetText();
+
+            foreach (var item in list)
+            {
+                VanzareUnitateComboBox1.Items.Add(item);
+            }
+        }
+
         private void adaugaAchizitiaButton_Click(object sender, EventArgs e)
         {
-            foreach (var item in localbucket)
-            {
-                
-                Produse produse = new Produse();
-                Depozite depozite = new Depozite();
-                Furnizori furnizori = new Furnizori();
-                Facturi facturi = new Facturi();
-
-
-                FacturaForm facturaForm = new FacturaForm(new List<Bucket> { item });
-                facturaForm.ShowDialog();
-                if (facturaForm.Canceled == true)
-                    continue;
-
-                facturi = new Facturi()
-                {
-                    Data = Convert.ToDateTime(facturaForm.Date),
-                    Nr = facturaForm.number,
-                    Tip = facturaForm.Tip,
-                    Observatii = facturaForm.Observatii
-                };
-
-                context.Facturis.Add(facturi);
-                context.SaveChanges();
-
-                if (!context.Produses.Any(o => o.Denumire.Equals(item.NumeProdus)))
-                {
-                    context.Produses.Add(new Produse()
-                    {
-                        Denumire = item.NumeProdus,
-                        Pret_Unitar = item.PretUnimate,
-                        Stoc = item.NumarBicati
-                    });
-                }
-                else
-                {
-                    var res = (from c in context.Produses
-                               where c.Denumire == item.NumeProdus
-                               select c);
-                    foreach (var i in res)
-                    {
-                        if (i.Pret_Unitar == item.PretUnimate)
-                        {
-                            i.Stoc += item.NumarBicati;
-                        }
-                    }
-                }
-                context.SaveChanges();
-
-                if (!context.Depozites.Any(o => o.Adresa.Equals(item.Depozit)))
-                {
-                    if (!localDepozite.Any(o => o.Adresa.Equals(item.Depozit)))
-                    {
-                        while (!this.adaugaDepozit(item.Depozit)) ;
-                    }
-
-                    foreach (var i in localDepozite)
-                    {
-                        if (i.Adresa.Equals(item.Depozit))
-                        {
-                            context.Depozites.Add(i);
-                            break;
-                        }
-                    }
-                }
-                context.SaveChanges();
-                if (!context.Furnizoris.Any(o => o.Nume.Equals(item.Furnizor)))
-                {
-                    if (!localFurnizori.Any(o => o.Adresa.Equals(item.Furnizor)))
-                    {
-                        while (!this.adaugaFurnizor(item.Furnizor)) ;
-                    }
-
-                    foreach (var i in localFurnizori)
-                    {
-                        if (i.Nume.Equals(item.Furnizor))
-                        {
-                            context.Furnizoris.Add(i);
-                            break;
-                        }
-                    }
-                }
-                context.SaveChanges();
-
-                produse = (from c in context.Produses
-                            where c.Denumire == item.NumeProdus && c.Pret_Unitar == item.PretUnimate
-                            select c).First();
-                depozite = (from c in context.Depozites
-                            where c.Adresa == item.Depozit
-                            select c).First();
-                furnizori = (from c in context.Furnizoris
-                            where c.Nume == item.Furnizor
-                            select c).First();
-                facturi = (from c in context.Facturis
-                             where c.Nr == facturi.Nr && c.Data == facturi.Data
-                             select c).First();
-
-                context.Achizitiis.Add(new Achizitii()
-                {
-                    ID_PRODUS = produse.ID_PRODUS,
-                    Numar_de_bucati = item.NumarBicati,
-                    Pret_Unitar = item.PretUnimate,
-                    ID_DEPOZIT = depozite.ID_DEPOZIT,
-                    ID_FURNIZOR = furnizori.ID_FURNIZOR,
-                    ID_FACTURA = facturi.ID_FACTURA
-                });
-                context.SaveChanges();
-            }
+            this.adaugaAchizitie();
         }
 
         private void refresh()
         {
-            achizitiiDataGridView.DataSource = (from c in context.Achizitiis
+            achizitiiDataGridView.DataSource = (from c in context.AchizitiiExtendeds
                                                 select c).ToList();
             achizitiiDataGridView.DataBindingComplete += (send, es) => tableDump(achizitiiDataGridView, context.Achizitiis);
         }
@@ -345,5 +415,87 @@ namespace Expenses_Manager
         {
             refresh();
         }
+
+
+        private void achizitiiDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void numeProdusComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadPretVanzare(numeProdusComboBox.Text);
+        }
+
+        private void achizitiiTabelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Achizitii> list = (from c in context.Achizitiis select c).ToList();
+            TabelViewForm tabelViewForm = new TabelViewForm(list);
+            tabelViewForm.ShowDialog();
+        }
+
+        private void depoziToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelaFurnizoriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelaProduseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelaFacturiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void depozitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddDepozit addDepozit = new AddDepozit("");
+            addDepozit.SetAdressChangeable();
+            addDepozit.ShowDialog();
+            if (!addDepozit.getChanged())
+                return;
+            context.Depozites.Add(addDepozit.getDepozit());
+            context.SaveChanges();
+        }
+
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.adaugaAchizitie();
+        }
+
+        private void produsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddProdus addProdus = new AddProdus();
+            addProdus.ShowDialog();
+            if (!addProdus.changed)
+                return;
+
+            context.Produses.Add(new Produse()
+            {
+                Denumire = addProdus.Denumire,
+                Pret_Unitar = addProdus.PretUnitar,
+                Stoc = 0
+            });
+            context.SaveChanges();
+        }
+
+        private void furnizorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddFurnizor addFurnizor = new AddFurnizor("");
+            addFurnizor.SetNameChangeable();
+            addFurnizor.ShowDialog();
+            if (!addFurnizor.getChanged())
+                return;
+
+            context.Furnizoris.Add(addFurnizor.getFurnizor());
+            context.SaveChanges();
+        }
     }
 }
+

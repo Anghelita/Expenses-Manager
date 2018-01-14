@@ -196,8 +196,16 @@ namespace Expenses_Manager
 
                 dataGridViewState.DataSource = results.ToList();
             }
+
+            InitializeMyComponenets();
         }
 
+        private void menuItemCont_Click(int id_angajat)
+        {
+            Form form = new CreareContForm(id_angajat);
+            form.ShowDialog();
+
+        }
         private void dataGridView_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -229,6 +237,7 @@ namespace Expenses_Manager
                     menu.MenuItems.Add(new MenuItem("Seteaza activ/inactiv", (s, ev) => menuItemSterge_Click(id_angajat)));
                     menu.MenuItems.Add(new MenuItem("Actualizeaza", (s, ev) => menuItemActualizeaza_Click(id_angajat)));
                     menu.MenuItems.Add(new MenuItem("Adauga prima", (s, ev) => menutItemPrima_Click(id_angajat)));
+                    menu.MenuItems.Add(new MenuItem("Creaza cont", (s, ev) => menuItemCont_Click(id_angajat)));
 
                     menu.Show(dataGridView, new Point(e.X, e.Y));
                 }

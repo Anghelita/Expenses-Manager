@@ -12,13 +12,15 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class ComenziExtended
     {
-        public int ID_USER { get; set; }
-        public Nullable<int> ID_ANGAJAT { get; set; }
-        public string Username { get; set; }
-        public byte[] Password { get; set; }
-    
-        public virtual Angajati Angajati { get; set; }
+        public int ID_COMANDA { get; set; }
+        public Nullable<System.DateTime> Data_plasare_comanda { get; set; }
+        public Nullable<System.DateTime> Data_estimata_livrare { get; set; }
+        public int Numar_Factura { get; set; }
+        public string Angajat { get; set; }
+        public string Destinatar { get; set; }
+        public string Status { get; set; }
+        public Nullable<decimal> Total { get; set; }
     }
 }

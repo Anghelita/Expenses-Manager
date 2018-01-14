@@ -8,10 +8,9 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Expenses_Manager</RootNamespace>
     <AssemblyName>Expenses Manager</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +38,13 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,6 +67,43 @@
     <Compile Include="AchizitiiExtended.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="Achizitii\AchizitiiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\AchizitiiForm.Designer.cs">
+      <DependentUpon>AchizitiiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adds\AddProdus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\AddProdus.Designer.cs">
+      <DependentUpon>AddProdus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adds\AddDepozit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\AddDepozit.Designer.cs">
+      <DependentUpon>AddDepozit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adds\AddFurnizor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\AddFurnizor.Designer.cs">
+      <DependentUpon>AddFurnizor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Achizitii\BucketList.cs" />
+    <Compile Include="Achizitii\BucketListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\BucketListForm.Designer.cs">
+      <DependentUpon>BucketListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adds\AddClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\AddClientForm.Designer.cs">
+      <DependentUpon>AddClientForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="ActualizeazaAngajat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +119,19 @@
     <Compile Include="Angajati.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="Adds\FacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\FacturaForm.Designer.cs">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
     <Compile Include="AngajatiForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AngajatiForm.Designer.cs">
       <DependentUpon>AngajatiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Angajati.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
     <Compile Include="CalculateProfitOriginal_Result.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
@@ -99,6 +150,34 @@
     </Compile>
     <Compile Include="Comenzi.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComenziEnhanced.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComenziExtended.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComenziForm\ComenziForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComenziForm\ComenziForm.Designer.cs">
+      <DependentUpon>ComenziForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Departamente.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    </Compile>
+    <Compile Include="ComenziEnhanced.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComenziExtended.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreareContForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreareContForm.Designer.cs">
+      <DependentUpon>CreareContForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Departamente.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
@@ -139,6 +218,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderDetailsExtended.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
     <Compile Include="PrimaInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +250,41 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="TabelViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabelViewForm.Designer.cs">
+      <DependentUpon>TabelViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Achizitii\AchizitiiForm.resx">
+      <DependentUpon>AchizitiiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\AddProdus.resx">
+      <DependentUpon>AddProdus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\AddDepozit.resx">
+      <DependentUpon>AddDepozit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\AddFurnizor.resx">
+      <DependentUpon>AddFurnizor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Achizitii\BucketListForm.resx">
+      <DependentUpon>BucketListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\FacturaForm.resx">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\AddClientForm.resx">
+      <DependentUpon>AddClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComenziForm\ComenziForm.resx">
+      <DependentUpon>ComenziForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     <Compile Include="User.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
@@ -176,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AngajatiForm.resx">
       <DependentUpon>AngajatiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreareContForm.resx">
+      <DependentUpon>CreareContForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -193,6 +313,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TabelViewForm.resx">
+      <DependentUpon>TabelViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Hramul.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Hramul.Designer.cs</LastGenOutput>
@@ -212,16 +335,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clienti\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Hramul.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Hramul.edmx</DependentUpon>
       <LastGenOutput>Hramul.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Hramul.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Hramul.edmx</DependentUpon>
+      <LastGenOutput>Hramul.cs</LastGenOutput>
     </Content>
     <Content Include="Hramul.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

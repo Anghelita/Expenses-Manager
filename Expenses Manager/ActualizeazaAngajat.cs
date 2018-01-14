@@ -94,17 +94,16 @@ namespace Expenses_Manager
                                        where s.Data.Value.Month == DateTime.Today.Month
                                        select s).First();
 
-                Departamente departament = (from d in context.Departamentes
-                                            where d.ID_DEPARTAMENT == angajat.ID_DEPARTAMENT
-                                            select d).First();
+                int departament_id = (from d in context.Departamentes
+                                            where d.Denumire.Equals(denumire)
+                                            select d.ID_DEPARTAMENT).First();
 
                 angajat.Nume = nume;
                 angajat.Prenume = prenume;
                 angajat.Functie = functie;
                 angajat.Rating = rating;
                 angajat.Adresa = adresa;
-
-                departament.Denumire = denumire;
+                angajat.ID_DEPARTAMENT = departament_id;
 
                 stat.Suma = salariu;
 
