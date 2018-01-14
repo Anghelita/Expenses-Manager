@@ -45,6 +45,9 @@ namespace Expenses_Manager
             this.dataGridViewComenzi = new System.Windows.Forms.DataGridView();
             this.btComenzi = new System.Windows.Forms.Button();
             this.btProduse = new System.Windows.Forms.Button();
+            this.btRaport = new System.Windows.Forms.Button();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.btDataBase = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.ssMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComenzi)).BeginInit();
@@ -54,7 +57,7 @@ namespace Expenses_Manager
             // 
             this.tbUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbUserName.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tbUserName.Location = new System.Drawing.Point(659, 56);
+            this.tbUserName.Location = new System.Drawing.Point(653, 56);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(100, 20);
             this.tbUserName.TabIndex = 0;
@@ -66,7 +69,7 @@ namespace Expenses_Manager
             // 
             this.tbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPassword.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tbPassword.Location = new System.Drawing.Point(766, 56);
+            this.tbPassword.Location = new System.Drawing.Point(760, 56);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(100, 20);
             this.tbPassword.TabIndex = 1;
@@ -78,9 +81,9 @@ namespace Expenses_Manager
             // 
             this.btLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(791, 82);
+            this.btLogin.Location = new System.Drawing.Point(772, 82);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(75, 27);
+            this.btLogin.Size = new System.Drawing.Size(88, 27);
             this.btLogin.TabIndex = 2;
             this.btLogin.Text = "Login";
             this.btLogin.UseVisualStyleBackColor = true;
@@ -92,7 +95,7 @@ namespace Expenses_Manager
             this.viewToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(890, 24);
+            this.menuStrip.Size = new System.Drawing.Size(884, 24);
             this.menuStrip.TabIndex = 3;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -116,7 +119,7 @@ namespace Expenses_Manager
             this.tssCastiguri});
             this.ssMain.Location = new System.Drawing.Point(0, 430);
             this.ssMain.Name = "ssMain";
-            this.ssMain.Size = new System.Drawing.Size(890, 22);
+            this.ssMain.Size = new System.Drawing.Size(884, 22);
             this.ssMain.TabIndex = 5;
             // 
             // tssCheltuieli
@@ -148,7 +151,7 @@ namespace Expenses_Manager
             this.lbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLogin.AutoSize = true;
             this.lbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLogin.Location = new System.Drawing.Point(678, 56);
+            this.lbLogin.Location = new System.Drawing.Point(672, 56);
             this.lbLogin.Name = "lbLogin";
             this.lbLogin.Size = new System.Drawing.Size(104, 20);
             this.lbLogin.TabIndex = 8;
@@ -163,7 +166,7 @@ namespace Expenses_Manager
             this.dataGridViewComenzi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewComenzi.Location = new System.Drawing.Point(12, 56);
             this.dataGridViewComenzi.Name = "dataGridViewComenzi";
-            this.dataGridViewComenzi.Size = new System.Drawing.Size(626, 337);
+            this.dataGridViewComenzi.Size = new System.Drawing.Size(620, 337);
             this.dataGridViewComenzi.TabIndex = 9;
             // 
             // btComenzi
@@ -188,11 +191,47 @@ namespace Expenses_Manager
             this.btProduse.Text = "Produse";
             this.btProduse.UseVisualStyleBackColor = true;
             // 
+            // btRaport
+            // 
+            this.btRaport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRaport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRaport.Location = new System.Drawing.Point(665, 186);
+            this.btRaport.Name = "btRaport";
+            this.btRaport.Size = new System.Drawing.Size(88, 27);
+            this.btRaport.TabIndex = 15;
+            this.btRaport.Text = "Raport";
+            this.btRaport.UseVisualStyleBackColor = true;
+            this.btRaport.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.Location = new System.Drawing.Point(746, 437);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(30, 13);
+            this.lbDate.TabIndex = 16;
+            this.lbDate.Text = "Date";
+            // 
+            // btDataBase
+            // 
+            this.btDataBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDataBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDataBase.Location = new System.Drawing.Point(760, 186);
+            this.btDataBase.Name = "btDataBase";
+            this.btDataBase.Size = new System.Drawing.Size(88, 27);
+            this.btDataBase.TabIndex = 17;
+            this.btDataBase.Text = "DataBase";
+            this.btDataBase.UseVisualStyleBackColor = true;
+            this.btDataBase.Click += new System.EventHandler(this.btDataBase_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 452);
+            this.ClientSize = new System.Drawing.Size(884, 452);
+            this.Controls.Add(this.btDataBase);
+            this.Controls.Add(this.lbDate);
+            this.Controls.Add(this.btRaport);
             this.Controls.Add(this.btProduse);
             this.Controls.Add(this.btComenzi);
             this.Controls.Add(this.dataGridViewComenzi);
@@ -234,5 +273,8 @@ namespace Expenses_Manager
         private System.Windows.Forms.DataGridView dataGridViewComenzi;
         private System.Windows.Forms.Button btComenzi;
         private System.Windows.Forms.Button btProduse;
+        private System.Windows.Forms.Button btRaport;
+        private System.Windows.Forms.Label lbDate;
+        private System.Windows.Forms.Button btDataBase;
     }
 }

@@ -14,6 +14,8 @@ namespace Expenses_Manager
 {
     public partial class MainForm : Form
     {
+        private bool LOGGED_IN = false;
+        private string DEPARTAMENT;
 
         public MainForm()
         {
@@ -28,12 +30,26 @@ namespace Expenses_Manager
 
                 tssCheltuieli.Text += cheltuieli.Value;
                 tssCastiguri.Text += castiguri.Value;
+
+                lbDate.Text = DateTime.Today.ToString();
                 
             }
         }
 
         private void btAngajati_Click(object sender, EventArgs e)
         {
+            //if (!LOGGED_IN)
+            //{
+            //    MessageBox.Show("Nu sunteti logat", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //if(!DEPARTAMENT.Equals("Human Resources"))
+            //{
+            //    MessageBox.Show("Nu apartineti departamentului de resurse umane", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
             Form form = new AngajatiForm();
             form.Show();
         }
@@ -79,6 +95,15 @@ namespace Expenses_Manager
                     lbLogin.Visible = true;
                     lbLogin.Text += userName;
 
+                    LOGGED_IN = true;
+
+                    DEPARTAMENT = (from u in context.Users
+                                   join a in context.Angajatis
+                                   on u.ID_ANGAJAT equals a.ID_ANGAJAT
+                                   join d in context.Departamentes
+                                   on a.ID_ANGAJAT equals d.ID_DEPARTAMENT
+                                   select d.Denumire).First();
+
                 }
                 catch(Exception exception)
                 {
@@ -88,6 +113,16 @@ namespace Expenses_Manager
         }
 
         private void tbUserName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btDataBase_Click(object sender, EventArgs e)
         {
 
         }
