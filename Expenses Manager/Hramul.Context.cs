@@ -36,7 +36,6 @@ namespace Expenses_Manager
         public virtual DbSet<Depozite> Depozites { get; set; }
         public virtual DbSet<Facturi> Facturis { get; set; }
         public virtual DbSet<Furnizori> Furnizoris { get; set; }
-        public virtual DbSet<Produse> Produses { get; set; }
         public virtual DbSet<State_de_plata> State_de_platas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -50,6 +49,11 @@ namespace Expenses_Manager
         public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
         public virtual DbSet<Salarii> Salariis { get; set; }
         public virtual DbSet<SalariiCurente> SalariiCurentes { get; set; }
+        public virtual DbSet<AchizitiiExtended> AchizitiiExtendeds { get; set; }
+        public virtual DbSet<ComenziEnhanced> ComenziEnhanceds { get; set; }
+        public virtual DbSet<ComenziExtended> ComenziExtendeds { get; set; }
+        public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
+        public virtual DbSet<Produse> Produses { get; set; }
     
         public virtual int AddOrderPart(Nullable<int> order_Id, Nullable<int> product_Id, Nullable<int> quantity)
         {
@@ -235,6 +239,11 @@ namespace Expenses_Manager
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual int IssueInvoice(ObjectParameter invoice_Id)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IssueInvoice", invoice_Id);
         }
     }
 }
