@@ -21,10 +21,12 @@ namespace Expenses_Manager.ComenziForm
         List<Clienti> clientiQuery;
         List<Produse> produseQuery;
         List<OrderDetailsExtended> listOrders;
+        List<ComenziExtended> listComenzi;
 
-        private void RefreshGridView()
+        private void RefreshComenziView()
         {
-            GridViewComenzi.DataSource = (from c in context.ComenziExtendeds select c).ToList();
+            listComenzi = (from c in context.ComenziExtendeds select c).ToList();
+            GridViewComenzi.DataSource = listComenzi;
         }
 
         private void RefreshPartsView()
@@ -53,14 +55,8 @@ namespace Expenses_Manager.ComenziForm
             }
         }
 
-        int orderID;
-
-        public ComenziForm()
+        private void RefreshAll()
         {
-            InitializeComponent();
-
-            RefreshGridView();
-
             facturiQuery = (from c in context.Facturis select c).ToList();
             List<String> listFacturi = new List<string>();
             foreach (var item in facturiQuery)
@@ -97,6 +93,18 @@ namespace Expenses_Manager.ComenziForm
                 comboBoxProduse.Items.Add(item.Denumire);
                 listproduse.Add(item.Denumire);
             }
+
+            RefreshComenziView();
+            RefreshPartsView();
+        }
+
+        int orderID;
+
+        public ComenziForm()
+        {
+            InitializeComponent();
+
+            RefreshAll();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -228,6 +236,247 @@ namespace Expenses_Manager.ComenziForm
             });
             context.SaveChanges();
             RefreshPartsView();
+        }
+
+        private void comboBoxFFactura_TextUpdate(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFFactura_TextChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+                if (item.Numar_Factura.ToString() == comboBoxFFactura.Text)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void comboBoxFAngajat_TextChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Angajat == comboBoxFAngajat.Text)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void comboBoxFDestinatar_TextChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Destinatar == comboBoxFDestinatar.Text)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void comboBoxFStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFStatus_TextChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Status.Trim() == comboBoxFStatus.Text)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void textBoxExpensive_TextChanged(object sender, EventArgs e)
+        {
+            if (!checkBox4.Checked)
+            {
+                RefreshComenziView();
+            };
+        }
+
+        private void textBoxCheap_TextChanged(object sender, EventArgs e)
+        {
+            if (!checkBox3.Checked)
+            {
+                RefreshComenziView();
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Total >= decimal.Parse(textBoxExpensive.Text) || !checkBox3.Checked)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Total <= decimal.Parse(textBoxCheap.Text) || !checkBox4.Checked)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void dateTimePicker2_TabIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (!checkBox1.Checked)
+            {
+                RefreshComenziView();
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (!checkBox2.Checked)
+            {
+                RefreshComenziView();
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Data_plasare_comanda <= DateTime.Parse(dateTimePicker1.Text) || !checkBox1.Checked)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            var items = listComenzi;
+            List<ComenziExtended> newResults = new List<ComenziExtended>();
+            foreach (var item in items)
+            {
+
+                if (item.Data_plasare_comanda >= DateTime.Parse(dateTimePicker2.Text) || !checkBox2.Checked)
+                {
+                    newResults.Add(item);
+                }
+            }
+            GridViewComenzi.DataSource = newResults;
+            listComenzi = newResults;
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            context.SaveChanges();
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshAll();
+        }
+
+        private void buttonResetFilters_Click(object sender, EventArgs e)
+        {
+            RefreshComenziView();
+            comboBoxFAngajat.Text = "";
+            comboBoxFDestinatar.Text = "";
+            comboBoxFFactura.Text = "";
+            comboBoxFStatus.Text = "";
+            textBoxCheap.Text = "";
+            textBoxExpensive.Text = "";
+        }
+
+        private void UpdateSubtotal()
+        {
+            int cantitate = 0;
+            if(textBoxCantitate.Text != "")
+            {
+                cantitate = int.Parse(textBoxCantitate.Text);
+            }
+            var produs_name = comboBoxProduse.Text;
+            var results = (from p in context.Produses
+                           select p).ToList();
+            decimal pret = 0;
+            int stoc_current;
+            foreach (var item in results)
+            {
+                if (item.Denumire == produs_name)
+                {
+                    pret = (decimal)item.Pret_Unitar;
+                    stoc_current = (int)item.Stoc;
+                    if (cantitate > stoc_current)
+                    {
+                        MessageBox.Show("Stoc insuficient");
+                        buttonAddPart.Enabled = false;
+                        return;
+                    }
+                    buttonAddPart.Enabled = true;
+                }
+            }
+            decimal suma = pret * cantitate;
+            textBoxSubtotal.Text = suma.ToString();
+        }
+
+        private void comboBoxProduse_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSubtotal();
+        }
+
+        private void textBoxCantitate_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSubtotal();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What were you really expecting?");
         }
     }
 }

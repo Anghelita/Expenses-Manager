@@ -57,9 +57,6 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.groupDetailsPart = new System.Windows.Forms.GroupBox();
-            this.buttonDonePart = new System.Windows.Forms.Button();
-            this.buttonDeletePart = new System.Windows.Forms.Button();
-            this.buttonUpdatePart = new System.Windows.Forms.Button();
             this.buttonAddPart = new System.Windows.Forms.Button();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
             this.textBoxSubtotal = new System.Windows.Forms.TextBox();
@@ -76,13 +73,18 @@
             this.labelClient = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statuslabel_Comanda_ID = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.buttonResetFilters = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewComenzi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewDetalii)).BeginInit();
             this.groupFilters.SuspendLayout();
             this.groupDetailsPart.SuspendLayout();
             this.groupAddOrder.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GridViewComenzi
@@ -91,9 +93,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.GridViewComenzi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.GridViewComenzi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewComenzi.Location = new System.Drawing.Point(12, 29);
+            this.GridViewComenzi.Location = new System.Drawing.Point(12, 47);
             this.GridViewComenzi.Name = "GridViewComenzi";
-            this.GridViewComenzi.Size = new System.Drawing.Size(866, 334);
+            this.GridViewComenzi.Size = new System.Drawing.Size(866, 344);
             this.GridViewComenzi.TabIndex = 0;
             this.GridViewComenzi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewComenzi_CellContentClick);
             this.GridViewComenzi.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewComenzi_RowEnter);
@@ -106,9 +108,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridViewDetalii.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.GridViewDetalii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewDetalii.Location = new System.Drawing.Point(884, 29);
+            this.GridViewDetalii.Location = new System.Drawing.Point(884, 47);
             this.GridViewDetalii.Name = "GridViewDetalii";
-            this.GridViewDetalii.Size = new System.Drawing.Size(356, 334);
+            this.GridViewDetalii.Size = new System.Drawing.Size(356, 344);
             this.GridViewDetalii.TabIndex = 1;
             // 
             // label1
@@ -116,7 +118,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Location = new System.Drawing.Point(12, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 2;
@@ -128,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(881, 13);
+            this.label2.Location = new System.Drawing.Point(881, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 3;
@@ -138,9 +140,9 @@
             // 
             this.TextBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TextBoxSearch.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TextBoxSearch.Location = new System.Drawing.Point(12, 369);
+            this.TextBoxSearch.Location = new System.Drawing.Point(12, 397);
             this.TextBoxSearch.Name = "TextBoxSearch";
-            this.TextBoxSearch.Size = new System.Drawing.Size(319, 20);
+            this.TextBoxSearch.Size = new System.Drawing.Size(238, 20);
             this.TextBoxSearch.TabIndex = 4;
             this.TextBoxSearch.Text = "Introduceti Numarul Comenzii";
             this.TextBoxSearch.TextChanged += new System.EventHandler(this.TextBoxSearch_TextChanged);
@@ -169,7 +171,7 @@
             this.groupFilters.Controls.Add(this.labelDestinatar);
             this.groupFilters.Controls.Add(this.labelAngajat);
             this.groupFilters.Controls.Add(this.labelNumarFactura);
-            this.groupFilters.Location = new System.Drawing.Point(337, 369);
+            this.groupFilters.Location = new System.Drawing.Point(337, 397);
             this.groupFilters.Name = "groupFilters";
             this.groupFilters.Size = new System.Drawing.Size(541, 139);
             this.groupFilters.TabIndex = 5;
@@ -185,6 +187,7 @@
             this.checkBox4.Size = new System.Drawing.Size(15, 14);
             this.checkBox4.TabIndex = 19;
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -194,6 +197,7 @@
             this.checkBox3.Size = new System.Drawing.Size(15, 14);
             this.checkBox3.TabIndex = 18;
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // textBoxCheap
             // 
@@ -201,6 +205,7 @@
             this.textBoxCheap.Name = "textBoxCheap";
             this.textBoxCheap.Size = new System.Drawing.Size(200, 20);
             this.textBoxCheap.TabIndex = 17;
+            this.textBoxCheap.TextChanged += new System.EventHandler(this.textBoxCheap_TextChanged);
             // 
             // labelCheapER
             // 
@@ -217,6 +222,7 @@
             this.textBoxExpensive.Name = "textBoxExpensive";
             this.textBoxExpensive.Size = new System.Drawing.Size(200, 20);
             this.textBoxExpensive.TabIndex = 15;
+            this.textBoxExpensive.TextChanged += new System.EventHandler(this.textBoxExpensive_TextChanged);
             // 
             // labelExpensivER
             // 
@@ -235,6 +241,7 @@
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 13;
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // dateTimePicker2
             // 
@@ -242,6 +249,8 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 12;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dateTimePicker2.TabIndexChanged += new System.EventHandler(this.dateTimePicker2_TabIndexChanged);
             // 
             // checkBox1
             // 
@@ -251,15 +260,16 @@
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // labelLaterThan
             // 
             this.labelLaterThan.AutoSize = true;
             this.labelLaterThan.Location = new System.Drawing.Point(221, 51);
             this.labelLaterThan.Name = "labelLaterThan";
-            this.labelLaterThan.Size = new System.Drawing.Size(57, 13);
+            this.labelLaterThan.Size = new System.Drawing.Size(72, 13);
             this.labelLaterThan.TabIndex = 10;
-            this.labelLaterThan.Text = "Dupa data";
+            this.labelLaterThan.Text = "Dupa data de";
             // 
             // dateTimePicker1
             // 
@@ -267,6 +277,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 9;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // labelEarlierThan
             // 
@@ -284,6 +295,8 @@
             this.comboBoxFStatus.Name = "comboBoxFStatus";
             this.comboBoxFStatus.Size = new System.Drawing.Size(146, 21);
             this.comboBoxFStatus.TabIndex = 7;
+            this.comboBoxFStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxFStatus_SelectedIndexChanged);
+            this.comboBoxFStatus.TextChanged += new System.EventHandler(this.comboBoxFStatus_TextChanged);
             // 
             // labelStatus
             // 
@@ -301,6 +314,7 @@
             this.comboBoxFDestinatar.Name = "comboBoxFDestinatar";
             this.comboBoxFDestinatar.Size = new System.Drawing.Size(146, 21);
             this.comboBoxFDestinatar.TabIndex = 5;
+            this.comboBoxFDestinatar.TextChanged += new System.EventHandler(this.comboBoxFDestinatar_TextChanged);
             // 
             // comboBoxFAngajat
             // 
@@ -309,6 +323,7 @@
             this.comboBoxFAngajat.Name = "comboBoxFAngajat";
             this.comboBoxFAngajat.Size = new System.Drawing.Size(146, 21);
             this.comboBoxFAngajat.TabIndex = 4;
+            this.comboBoxFAngajat.TextChanged += new System.EventHandler(this.comboBoxFAngajat_TextChanged);
             // 
             // comboBoxFFactura
             // 
@@ -317,6 +332,8 @@
             this.comboBoxFFactura.Name = "comboBoxFFactura";
             this.comboBoxFFactura.Size = new System.Drawing.Size(146, 21);
             this.comboBoxFFactura.TabIndex = 3;
+            this.comboBoxFFactura.TextUpdate += new System.EventHandler(this.comboBoxFFactura_TextUpdate);
+            this.comboBoxFFactura.TextChanged += new System.EventHandler(this.comboBoxFFactura_TextChanged);
             // 
             // labelDestinatar
             // 
@@ -348,7 +365,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAdd.Location = new System.Drawing.Point(256, 396);
+            this.buttonAdd.Location = new System.Drawing.Point(256, 493);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 6;
@@ -359,19 +376,17 @@
             // buttonUpdate
             // 
             this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonUpdate.Location = new System.Drawing.Point(256, 425);
+            this.buttonUpdate.Location = new System.Drawing.Point(256, 406);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 8;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // groupDetailsPart
             // 
             this.groupDetailsPart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupDetailsPart.Controls.Add(this.buttonDonePart);
-            this.groupDetailsPart.Controls.Add(this.buttonDeletePart);
-            this.groupDetailsPart.Controls.Add(this.buttonUpdatePart);
             this.groupDetailsPart.Controls.Add(this.buttonAddPart);
             this.groupDetailsPart.Controls.Add(this.textBoxTotal);
             this.groupDetailsPart.Controls.Add(this.textBoxSubtotal);
@@ -381,45 +396,18 @@
             this.groupDetailsPart.Controls.Add(this.labelCantitate);
             this.groupDetailsPart.Controls.Add(this.comboBoxProduse);
             this.groupDetailsPart.Controls.Add(this.labelProduct);
-            this.groupDetailsPart.Location = new System.Drawing.Point(884, 369);
+            this.groupDetailsPart.Location = new System.Drawing.Point(884, 397);
             this.groupDetailsPart.Name = "groupDetailsPart";
             this.groupDetailsPart.Size = new System.Drawing.Size(356, 139);
             this.groupDetailsPart.TabIndex = 10;
             this.groupDetailsPart.TabStop = false;
             this.groupDetailsPart.Text = "Add Order Part";
             // 
-            // buttonDonePart
-            // 
-            this.buttonDonePart.Location = new System.Drawing.Point(217, 101);
-            this.buttonDonePart.Name = "buttonDonePart";
-            this.buttonDonePart.Size = new System.Drawing.Size(101, 23);
-            this.buttonDonePart.TabIndex = 11;
-            this.buttonDonePart.Text = "Done";
-            this.buttonDonePart.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeletePart
-            // 
-            this.buttonDeletePart.Location = new System.Drawing.Point(217, 74);
-            this.buttonDeletePart.Name = "buttonDeletePart";
-            this.buttonDeletePart.Size = new System.Drawing.Size(101, 23);
-            this.buttonDeletePart.TabIndex = 10;
-            this.buttonDeletePart.Text = "Delete";
-            this.buttonDeletePart.UseVisualStyleBackColor = true;
-            // 
-            // buttonUpdatePart
-            // 
-            this.buttonUpdatePart.Location = new System.Drawing.Point(217, 46);
-            this.buttonUpdatePart.Name = "buttonUpdatePart";
-            this.buttonUpdatePart.Size = new System.Drawing.Size(101, 23);
-            this.buttonUpdatePart.TabIndex = 9;
-            this.buttonUpdatePart.Text = "Update";
-            this.buttonUpdatePart.UseVisualStyleBackColor = true;
-            // 
             // buttonAddPart
             // 
-            this.buttonAddPart.Location = new System.Drawing.Point(217, 18);
+            this.buttonAddPart.Location = new System.Drawing.Point(252, 99);
             this.buttonAddPart.Name = "buttonAddPart";
-            this.buttonAddPart.Size = new System.Drawing.Size(101, 23);
+            this.buttonAddPart.Size = new System.Drawing.Size(98, 23);
             this.buttonAddPart.TabIndex = 8;
             this.buttonAddPart.Text = "Add";
             this.buttonAddPart.UseVisualStyleBackColor = true;
@@ -430,7 +418,7 @@
             this.textBoxTotal.Enabled = false;
             this.textBoxTotal.Location = new System.Drawing.Point(62, 102);
             this.textBoxTotal.Name = "textBoxTotal";
-            this.textBoxTotal.Size = new System.Drawing.Size(149, 20);
+            this.textBoxTotal.Size = new System.Drawing.Size(184, 20);
             this.textBoxTotal.TabIndex = 7;
             this.textBoxTotal.Text = "0";
             this.textBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -440,7 +428,7 @@
             this.textBoxSubtotal.Enabled = false;
             this.textBoxSubtotal.Location = new System.Drawing.Point(62, 76);
             this.textBoxSubtotal.Name = "textBoxSubtotal";
-            this.textBoxSubtotal.Size = new System.Drawing.Size(149, 20);
+            this.textBoxSubtotal.Size = new System.Drawing.Size(184, 20);
             this.textBoxSubtotal.TabIndex = 6;
             this.textBoxSubtotal.Text = "0";
             this.textBoxSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -459,8 +447,9 @@
             // 
             this.textBoxCantitate.Location = new System.Drawing.Point(62, 48);
             this.textBoxCantitate.Name = "textBoxCantitate";
-            this.textBoxCantitate.Size = new System.Drawing.Size(149, 20);
+            this.textBoxCantitate.Size = new System.Drawing.Size(184, 20);
             this.textBoxCantitate.TabIndex = 4;
+            this.textBoxCantitate.TextChanged += new System.EventHandler(this.textBoxCantitate_TextChanged);
             // 
             // labelSubtotal
             // 
@@ -485,8 +474,9 @@
             this.comboBoxProduse.FormattingEnabled = true;
             this.comboBoxProduse.Location = new System.Drawing.Point(62, 19);
             this.comboBoxProduse.Name = "comboBoxProduse";
-            this.comboBoxProduse.Size = new System.Drawing.Size(149, 21);
+            this.comboBoxProduse.Size = new System.Drawing.Size(184, 21);
             this.comboBoxProduse.TabIndex = 1;
+            this.comboBoxProduse.TextChanged += new System.EventHandler(this.comboBoxProduse_TextChanged);
             // 
             // labelProduct
             // 
@@ -504,7 +494,7 @@
             this.groupAddOrder.Controls.Add(this.labelEstDate);
             this.groupAddOrder.Controls.Add(this.comboBoxClient);
             this.groupAddOrder.Controls.Add(this.labelClient);
-            this.groupAddOrder.Location = new System.Drawing.Point(12, 396);
+            this.groupAddOrder.Location = new System.Drawing.Point(12, 424);
             this.groupAddOrder.Name = "groupAddOrder";
             this.groupAddOrder.Size = new System.Drawing.Size(238, 112);
             this.groupAddOrder.TabIndex = 12;
@@ -549,7 +539,7 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statuslabel_Comanda_ID});
-            this.statusStrip.Location = new System.Drawing.Point(0, 498);
+            this.statusStrip.Location = new System.Drawing.Point(0, 526);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1252, 22);
             this.statusStrip.TabIndex = 13;
@@ -562,22 +552,62 @@
             this.statuslabel_Comanda_ID.Text = "ID Comanda: ";
             this.statuslabel_Comanda_ID.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
-            // menuStrip
+            // buttonResetFilters
             // 
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1252, 24);
-            this.menuStrip.TabIndex = 14;
-            this.menuStrip.Text = "The Menu";
-            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
+            this.buttonResetFilters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonResetFilters.Location = new System.Drawing.Point(256, 464);
+            this.buttonResetFilters.Name = "buttonResetFilters";
+            this.buttonResetFilters.Size = new System.Drawing.Size(75, 23);
+            this.buttonResetFilters.TabIndex = 15;
+            this.buttonResetFilters.Text = "Reset Filters";
+            this.buttonResetFilters.UseVisualStyleBackColor = true;
+            this.buttonResetFilters.Click += new System.EventHandler(this.buttonResetFilters_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1252, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRefresh.Location = new System.Drawing.Point(256, 435);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefresh.TabIndex = 17;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // ComenziForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1252, 520);
+            this.ClientSize = new System.Drawing.Size(1252, 548);
+            this.Controls.Add(this.buttonRefresh);
+            this.Controls.Add(this.buttonResetFilters);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupAddOrder);
             this.Controls.Add(this.groupDetailsPart);
             this.Controls.Add(this.buttonUpdate);
@@ -588,7 +618,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GridViewDetalii);
             this.Controls.Add(this.GridViewComenzi);
-            this.MainMenuStrip = this.menuStrip;
             this.Name = "ComenziForm";
             this.Text = "ComenziForm";
             ((System.ComponentModel.ISupportInitialize)(this.GridViewComenzi)).EndInit();
@@ -601,6 +630,8 @@
             this.groupAddOrder.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,16 +677,17 @@
         private System.Windows.Forms.Button buttonAddPart;
         private System.Windows.Forms.TextBox textBoxTotal;
         private System.Windows.Forms.TextBox textBoxSubtotal;
-        private System.Windows.Forms.Button buttonDonePart;
-        private System.Windows.Forms.Button buttonDeletePart;
-        private System.Windows.Forms.Button buttonUpdatePart;
         private System.Windows.Forms.GroupBox groupAddOrder;
         private System.Windows.Forms.Label labelClient;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label labelEstDate;
         private System.Windows.Forms.ComboBox comboBoxClient;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripStatusLabel statuslabel_Comanda_ID;
+        private System.Windows.Forms.Button buttonResetFilters;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
