@@ -57,8 +57,33 @@
     <Compile Include="Achizitii.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Achizitii\AchizitiiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\AchizitiiForm.Designer.cs">
+      <DependentUpon>AchizitiiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Achizitii\AddDepozit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\AddDepozit.Designer.cs">
+      <DependentUpon>AddDepozit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Achizitii\AddFurnizor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\AddFurnizor.Designer.cs">
+      <DependentUpon>AddFurnizor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Angajati.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Achizitii\BucketList.cs" />
+    <Compile Include="Achizitii\BucketListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\BucketListForm.Designer.cs">
+      <DependentUpon>BucketListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CalculateProfit_Result.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
@@ -83,6 +108,12 @@
     </Compile>
     <Compile Include="Depozite.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Achizitii\FacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Achizitii\FacturaForm.Designer.cs">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturi.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
@@ -137,6 +168,21 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Achizitii\AchizitiiForm.resx">
+      <DependentUpon>AchizitiiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Achizitii\AddDepozit.resx">
+      <DependentUpon>AddDepozit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Achizitii\AddFurnizor.resx">
+      <DependentUpon>AddFurnizor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Achizitii\BucketListForm.resx">
+      <DependentUpon>BucketListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Achizitii\FacturaForm.resx">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

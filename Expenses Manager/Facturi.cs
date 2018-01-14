@@ -31,5 +31,6 @@ namespace Expenses_Manager
         public virtual ICollection<Achizitii> Achizitiis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comenzi> Comenzis { get; set; }
+        public bool Canceled { get; internal set; }
     }
 }
