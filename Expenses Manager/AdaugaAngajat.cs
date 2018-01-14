@@ -70,35 +70,34 @@ namespace Expenses_Manager
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            Departamente departament = new Departamente
+            using (var context = new HramulEntities())
             {
-                Denumire = denumire
-            };
+                Departamente departament = (from d in context.Departamentes
+                                           where d.Denumire.Equals(denumire)
+                                           select d).First();
 
-            Angajati angajat = new Angajati
-            {
-                Nume = nume,
-                Prenume = prenume,
-                Adresa = adresa,
-                Rating = rating,
-                Functie = functie,
-                Activ = true,
-                Departamente = departament
-            };
+                Angajati angajat = new Angajati
+                {
+                    Nume = nume,
+                    Prenume = prenume,
+                    Adresa = adresa,
+                    Rating = rating,
+                    Functie = functie,
+                    Activ = true,
+                    Departamente = departament
+                };
 
-            State_de_plata stat = new State_de_plata
-            {
-                Suma = salariu,
-                TIP_PLATA = "SALARIU",
-                Data = DateTime.Today,
-                Angajati = angajat
-            };
+                State_de_plata stat = new State_de_plata
+                {
+                    Suma = salariu,
+                    TIP_PLATA = "SALARIU",
+                    Data = DateTime.Today,
+                    Angajati = angajat
+                };
 
-            using (var context =new HramulEntities())
-            {
+
                 context.Angajatis.Add(angajat);
                 context.State_de_platas.Add(stat);
-                context.Departamentes.Add(departament);
 
                 context.SaveChanges();
 

@@ -26,11 +26,8 @@ namespace Expenses_Manager
                 var results = from a in context.Angajatis
                               join d in context.Departamentes
                               on a.ID_DEPARTAMENT equals d.ID_DEPARTAMENT
-                              join s in context.State_de_platas
-                              on a.ID_ANGAJAT equals s.ID_ANGAJAT
-                              where s.TIP_PLATA.Equals("SALARIU")
-                              where s.Data.Value.Year == DateTime.Today.Year
-                              where s.Data.Value.Month == DateTime.Today.Month
+                              join aa in context.SalariiCurentes
+                              on a.ID_ANGAJAT equals aa.ID_ANGAJAT
                               orderby a.Nume
                               select new
                               {
@@ -42,25 +39,16 @@ namespace Expenses_Manager
                                   a.Functie,
                                   a.Activ,
                                   d.Denumire,
-                                  s.Suma
+                                  aa.Salariu
                               };
                 dataGridView.DataSource = results.ToList();
 
                 tssNumarAngajati.Text = "Total Angajati: " +
-                                         (from a in context.Angajatis
-                                          join s in context.State_de_platas
-                                          on a.ID_ANGAJAT equals s.ID_ANGAJAT
-                                          where s.Data.Value.Year == DateTime.Today.Year
-                                          where s.Data.Value.Month == DateTime.Today.Month
-                                          where s.TIP_PLATA.Equals("SALARIU")
+                                         (from a in context.Salariis
                                           select a).Count();
 
                 tssTotalSalarii.Text = "Total salarii: " +
-                                        (from a in context.SalariiCurentes
-                                         join s in context.State_de_platas
-                                         on a.ID_ANGAJAT equals s.ID_ANGAJAT
-                                         where s.Data.Value.Year == DateTime.Today.Year
-                                         where s.Data.Value.Month == DateTime.Today.Month
+                                        (from a in context.Salariis
                                          select a.Salariu).Sum();
             }
         }
@@ -187,6 +175,29 @@ namespace Expenses_Manager
             }
         }
 
+        private void menutItemPrima_Click(int id_angajat)
+        {
+            Form form = new PrimaInputForm(id_angajat);
+            form.ShowDialog();
+
+            MessageBox.Show("Prima a fost adaugata");
+
+            using (var context = new HramulEntities())
+            {
+                var results = from s in context.State_de_platas
+                              where s.ID_ANGAJAT == id_angajat
+                              select new
+                              {
+                                  s.ID_PLATA,
+                                  s.Suma,
+                                  s.TIP_PLATA,
+                                  s.Data
+                              };
+
+                dataGridViewState.DataSource = results.ToList();
+            }
+        }
+
         private void dataGridView_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -217,6 +228,7 @@ namespace Expenses_Manager
                     ContextMenu menu = new ContextMenu();
                     menu.MenuItems.Add(new MenuItem("Seteaza activ/inactiv", (s, ev) => menuItemSterge_Click(id_angajat)));
                     menu.MenuItems.Add(new MenuItem("Actualizeaza", (s, ev) => menuItemActualizeaza_Click(id_angajat)));
+                    menu.MenuItems.Add(new MenuItem("Adauga prima", (s, ev) => menutItemPrima_Click(id_angajat)));
 
                     menu.Show(dataGridView, new Point(e.X, e.Y));
                 }
@@ -226,5 +238,6 @@ namespace Expenses_Manager
                 MessageBox.Show("Esti in afara numarului de randuri din grid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
