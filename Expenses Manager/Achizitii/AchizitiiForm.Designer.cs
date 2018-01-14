@@ -32,11 +32,26 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depozitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.furnizorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.achizitiiTabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depoziToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaFurnizoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaProduseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaFacturiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.achizitiiDataGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.refreshbutton = new System.Windows.Forms.Button();
             this.Label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numeProdusComboBox = new System.Windows.Forms.ComboBox();
+            this.VanzareUnitateComboBox1 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.veziListaButton = new System.Windows.Forms.Button();
             this.adaugaAchizitiaButton = new System.Windows.Forms.Button();
             this.adaugaProdusButton = new System.Windows.Forms.Button();
@@ -50,22 +65,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.depozitComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.VanzareUnitateComboBox1 = new System.Windows.Forms.ComboBox();
-            this.numeProdusComboBox = new System.Windows.Forms.ComboBox();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.achizitieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.depozitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.produsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.furnizorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.achizitiiTabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.depoziToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabelaFurnizoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabelaProduseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabelaFacturiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.achizitiiDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -96,6 +95,98 @@
             this.menuStrip1.Size = new System.Drawing.Size(1309, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.depozitToolStripMenuItem,
+            this.facturaToolStripMenuItem,
+            this.produsToolStripMenuItem,
+            this.furnizorToolStripMenuItem});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // depozitToolStripMenuItem
+            // 
+            this.depozitToolStripMenuItem.Name = "depozitToolStripMenuItem";
+            this.depozitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.depozitToolStripMenuItem.Text = "Depozit";
+            this.depozitToolStripMenuItem.Click += new System.EventHandler(this.depozitToolStripMenuItem_Click);
+            // 
+            // facturaToolStripMenuItem
+            // 
+            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.facturaToolStripMenuItem.Text = "Factura";
+            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
+            // 
+            // produsToolStripMenuItem
+            // 
+            this.produsToolStripMenuItem.Name = "produsToolStripMenuItem";
+            this.produsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.produsToolStripMenuItem.Text = "Produs";
+            this.produsToolStripMenuItem.Click += new System.EventHandler(this.produsToolStripMenuItem_Click);
+            // 
+            // furnizorToolStripMenuItem
+            // 
+            this.furnizorToolStripMenuItem.Name = "furnizorToolStripMenuItem";
+            this.furnizorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.furnizorToolStripMenuItem.Text = "Furnizor";
+            this.furnizorToolStripMenuItem.Click += new System.EventHandler(this.furnizorToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.achizitiiTabelToolStripMenuItem,
+            this.depoziToolStripMenuItem,
+            this.tabelaFurnizoriToolStripMenuItem,
+            this.tabelaProduseToolStripMenuItem,
+            this.tabelaFacturiToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.editToolStripMenuItem.Text = "View";
+            // 
+            // achizitiiTabelToolStripMenuItem
+            // 
+            this.achizitiiTabelToolStripMenuItem.Name = "achizitiiTabelToolStripMenuItem";
+            this.achizitiiTabelToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.achizitiiTabelToolStripMenuItem.Text = "Tabela achizitii";
+            this.achizitiiTabelToolStripMenuItem.Click += new System.EventHandler(this.achizitiiTabelToolStripMenuItem_Click);
+            // 
+            // depoziToolStripMenuItem
+            // 
+            this.depoziToolStripMenuItem.Name = "depoziToolStripMenuItem";
+            this.depoziToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.depoziToolStripMenuItem.Text = "Tabela depozite";
+            this.depoziToolStripMenuItem.Click += new System.EventHandler(this.depoziToolStripMenuItem_Click);
+            // 
+            // tabelaFurnizoriToolStripMenuItem
+            // 
+            this.tabelaFurnizoriToolStripMenuItem.Name = "tabelaFurnizoriToolStripMenuItem";
+            this.tabelaFurnizoriToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.tabelaFurnizoriToolStripMenuItem.Text = "Tabela furnizori";
+            this.tabelaFurnizoriToolStripMenuItem.Click += new System.EventHandler(this.tabelaFurnizoriToolStripMenuItem_Click);
+            // 
+            // tabelaProduseToolStripMenuItem
+            // 
+            this.tabelaProduseToolStripMenuItem.Name = "tabelaProduseToolStripMenuItem";
+            this.tabelaProduseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.tabelaProduseToolStripMenuItem.Text = "Tabela produse";
+            this.tabelaProduseToolStripMenuItem.Click += new System.EventHandler(this.tabelaProduseToolStripMenuItem_Click);
+            // 
+            // tabelaFacturiToolStripMenuItem
+            // 
+            this.tabelaFacturiToolStripMenuItem.Name = "tabelaFacturiToolStripMenuItem";
+            this.tabelaFacturiToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.tabelaFacturiToolStripMenuItem.Text = "Tabela facturi";
+            this.tabelaFacturiToolStripMenuItem.Click += new System.EventHandler(this.tabelaFacturiToolStripMenuItem_Click);
+            // 
+            // vieToolStripMenuItem
+            // 
+            this.vieToolStripMenuItem.Name = "vieToolStripMenuItem";
+            this.vieToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.vieToolStripMenuItem.Text = "Edit";
             // 
             // achizitiiDataGridView
             // 
@@ -164,6 +255,36 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1282, 63);
             this.panel2.TabIndex = 8;
+            // 
+            // numeProdusComboBox
+            // 
+            this.numeProdusComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.numeProdusComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.numeProdusComboBox.FormattingEnabled = true;
+            this.numeProdusComboBox.Location = new System.Drawing.Point(12, 24);
+            this.numeProdusComboBox.Name = "numeProdusComboBox";
+            this.numeProdusComboBox.Size = new System.Drawing.Size(167, 21);
+            this.numeProdusComboBox.TabIndex = 16;
+            this.numeProdusComboBox.SelectedIndexChanged += new System.EventHandler(this.numeProdusComboBox_SelectedIndexChanged);
+            // 
+            // VanzareUnitateComboBox1
+            // 
+            this.VanzareUnitateComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.VanzareUnitateComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.VanzareUnitateComboBox1.FormattingEnabled = true;
+            this.VanzareUnitateComboBox1.Location = new System.Drawing.Point(394, 23);
+            this.VanzareUnitateComboBox1.Name = "VanzareUnitateComboBox1";
+            this.VanzareUnitateComboBox1.Size = new System.Drawing.Size(126, 21);
+            this.VanzareUnitateComboBox1.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(394, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(117, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Pret vanzare pe unitate";
             // 
             // veziListaButton
             // 
@@ -280,134 +401,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 444);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Quick Add";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(394, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Pret vanzare pe unitate";
-            // 
-            // VanzareUnitateComboBox1
-            // 
-            this.VanzareUnitateComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.VanzareUnitateComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.VanzareUnitateComboBox1.FormattingEnabled = true;
-            this.VanzareUnitateComboBox1.Location = new System.Drawing.Point(394, 23);
-            this.VanzareUnitateComboBox1.Name = "VanzareUnitateComboBox1";
-            this.VanzareUnitateComboBox1.Size = new System.Drawing.Size(126, 21);
-            this.VanzareUnitateComboBox1.TabIndex = 15;
-            // 
-            // numeProdusComboBox
-            // 
-            this.numeProdusComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.numeProdusComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.numeProdusComboBox.FormattingEnabled = true;
-            this.numeProdusComboBox.Location = new System.Drawing.Point(12, 24);
-            this.numeProdusComboBox.Name = "numeProdusComboBox";
-            this.numeProdusComboBox.Size = new System.Drawing.Size(167, 21);
-            this.numeProdusComboBox.TabIndex = 16;
-            this.numeProdusComboBox.SelectedIndexChanged += new System.EventHandler(this.numeProdusComboBox_SelectedIndexChanged);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.achizitieToolStripMenuItem,
-            this.depozitToolStripMenuItem,
-            this.facturaToolStripMenuItem,
-            this.produsToolStripMenuItem,
-            this.furnizorToolStripMenuItem});
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.addToolStripMenuItem.Text = "Add";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.achizitiiTabelToolStripMenuItem,
-            this.depoziToolStripMenuItem,
-            this.tabelaFurnizoriToolStripMenuItem,
-            this.tabelaProduseToolStripMenuItem,
-            this.tabelaFacturiToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.editToolStripMenuItem.Text = "View";
-            // 
-            // vieToolStripMenuItem
-            // 
-            this.vieToolStripMenuItem.Name = "vieToolStripMenuItem";
-            this.vieToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.vieToolStripMenuItem.Text = "Edit";
-            // 
-            // achizitieToolStripMenuItem
-            // 
-            this.achizitieToolStripMenuItem.Name = "achizitieToolStripMenuItem";
-            this.achizitieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.achizitieToolStripMenuItem.Text = "Achizitie";
-            // 
-            // depozitToolStripMenuItem
-            // 
-            this.depozitToolStripMenuItem.Name = "depozitToolStripMenuItem";
-            this.depozitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.depozitToolStripMenuItem.Text = "Depozit";
-            // 
-            // facturaToolStripMenuItem
-            // 
-            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.facturaToolStripMenuItem.Text = "Factura";
-            // 
-            // produsToolStripMenuItem
-            // 
-            this.produsToolStripMenuItem.Name = "produsToolStripMenuItem";
-            this.produsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.produsToolStripMenuItem.Text = "Produs";
-            // 
-            // furnizorToolStripMenuItem
-            // 
-            this.furnizorToolStripMenuItem.Name = "furnizorToolStripMenuItem";
-            this.furnizorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.furnizorToolStripMenuItem.Text = "Furnizor";
-            // 
-            // achizitiiTabelToolStripMenuItem
-            // 
-            this.achizitiiTabelToolStripMenuItem.Name = "achizitiiTabelToolStripMenuItem";
-            this.achizitiiTabelToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.achizitiiTabelToolStripMenuItem.Text = "Tabela achizitii";
-            this.achizitiiTabelToolStripMenuItem.Click += new System.EventHandler(this.achizitiiTabelToolStripMenuItem_Click);
-            // 
-            // depoziToolStripMenuItem
-            // 
-            this.depoziToolStripMenuItem.Name = "depoziToolStripMenuItem";
-            this.depoziToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.depoziToolStripMenuItem.Text = "Tabela depozite";
-            this.depoziToolStripMenuItem.Click += new System.EventHandler(this.depoziToolStripMenuItem_Click);
-            // 
-            // tabelaFurnizoriToolStripMenuItem
-            // 
-            this.tabelaFurnizoriToolStripMenuItem.Name = "tabelaFurnizoriToolStripMenuItem";
-            this.tabelaFurnizoriToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.tabelaFurnizoriToolStripMenuItem.Text = "Tabela furnizori";
-            this.tabelaFurnizoriToolStripMenuItem.Click += new System.EventHandler(this.tabelaFurnizoriToolStripMenuItem_Click);
-            // 
-            // tabelaProduseToolStripMenuItem
-            // 
-            this.tabelaProduseToolStripMenuItem.Name = "tabelaProduseToolStripMenuItem";
-            this.tabelaProduseToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.tabelaProduseToolStripMenuItem.Text = "Tabela produse";
-            this.tabelaProduseToolStripMenuItem.Click += new System.EventHandler(this.tabelaProduseToolStripMenuItem_Click);
-            // 
-            // tabelaFacturiToolStripMenuItem
-            // 
-            this.tabelaFacturiToolStripMenuItem.Name = "tabelaFacturiToolStripMenuItem";
-            this.tabelaFacturiToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.tabelaFacturiToolStripMenuItem.Text = "Tabela facturi";
-            this.tabelaFacturiToolStripMenuItem.Click += new System.EventHandler(this.tabelaFacturiToolStripMenuItem_Click);
+            this.label2.Text = "Add Achizitie";
             // 
             // AchizitiiForm
             // 
@@ -463,7 +459,6 @@
         private System.Windows.Forms.ComboBox VanzareUnitateComboBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem achizitieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem depozitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produsToolStripMenuItem;

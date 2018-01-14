@@ -66,6 +66,18 @@
     <Compile Include="Achizitii\AchizitiiForm.Designer.cs">
       <DependentUpon>AchizitiiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddAchizitie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAchizitie.Designer.cs">
+      <DependentUpon>AddAchizitie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adds\AddProdus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adds\AddProdus.Designer.cs">
+      <DependentUpon>AddProdus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Adds\AddDepozit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,9 @@
     </Compile>
     <EmbeddedResource Include="Achizitii\AchizitiiForm.resx">
       <DependentUpon>AchizitiiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adds\AddProdus.resx">
+      <DependentUpon>AddProdus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Adds\AddDepozit.resx">
       <DependentUpon>AddDepozit.cs</DependentUpon>

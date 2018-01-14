@@ -17,7 +17,7 @@ namespace Expenses_Manager
         public String Tip { get; set; }
         public String Observatii { get; set; }
 
-        public bool Canceled { get; set; }
+        public bool Canceled { get; set; } = true;
 
         public FacturaForm(List<Bucket> bucket)
         {           
