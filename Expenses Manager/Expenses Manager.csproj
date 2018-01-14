@@ -109,10 +109,10 @@
     <Compile Include="Depozite.cs">
       <DependentUpon>HtamulModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FacturaForm.cs">
+    <Compile Include="Achizitii\FacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FacturaForm.Designer.cs">
+    <Compile Include="Achizitii\FacturaForm.Designer.cs">
       <DependentUpon>FacturaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturi.cs">
@@ -180,7 +180,7 @@
     <EmbeddedResource Include="Achizitii\BucketListForm.resx">
       <DependentUpon>BucketListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FacturaForm.resx">
+    <EmbeddedResource Include="Achizitii\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
