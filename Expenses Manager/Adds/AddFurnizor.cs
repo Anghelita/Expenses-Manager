@@ -50,5 +50,10 @@ namespace Expenses_Manager
         {
             return changed;
         }
+
+        public void SetNameChangeable()
+        {
+            numeTextBox.ReadOnly = false;
+        }
     }
 }

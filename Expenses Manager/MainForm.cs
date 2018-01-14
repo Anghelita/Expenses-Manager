@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.Data.Entity;
 using System.Security.Cryptography;
 using ExcelLibrary.BinaryDrawingFormat;
 using ExcelLibrary.BinaryFileFormat;
@@ -56,6 +58,21 @@ namespace Expenses_Manager
                 return;
             }
 
+
+
+            //if (!LOGGED_IN)
+            //{
+            //    MessageBox.Show("Nu sunteti logat", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //if(!DEPARTAMENT.Equals("Human Resources"))
+            //{
+            //    MessageBox.Show("Nu apartineti departamentului de resurse umane", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+
             Form form = new AngajatiForm();
             form.Show();
         }
@@ -72,6 +89,10 @@ namespace Expenses_Manager
             tbPassword.ForeColor = Color.Black;
         }
 
+        private void btAchizitii_Click(object sender, EventArgs e)
+        {
+            Form form = new AchizitiiForm();
+            form.Show();
         private void btLogin_Click(object sender, EventArgs e)
         {
             string userName = tbUserName.Text;
