@@ -100,6 +100,18 @@
     <Compile Include="Comenzi.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComenziEnhanced.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComenziExtended.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreareContForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreareContForm.Designer.cs">
+      <DependentUpon>CreareContForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Departamente.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
@@ -139,6 +151,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderDetailsExtended.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
+    </Compile>
     <Compile Include="PrimaInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AngajatiForm.resx">
       <DependentUpon>AngajatiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreareContForm.resx">
+      <DependentUpon>CreareContForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

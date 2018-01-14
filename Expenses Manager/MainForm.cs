@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Expenses_Manager
 {
@@ -47,6 +48,48 @@ namespace Expenses_Manager
         {
             tbPassword.Text = "";
             tbPassword.ForeColor = Color.Black;
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            string userName = tbUserName.Text;
+            string parola = tbPassword.Text;
+
+            using (var context = new HramulEntities())
+            {
+                try
+                {
+                    User user = (from u in context.Users
+                                 where u.Username.Equals(userName)
+                                 select u).First();
+
+                    byte[] hash = MD5.Create().ComputeHash(ASCIIEncoding.ASCII.GetBytes(parola));
+                    byte[] userHash = user.Password;
+
+                    for(int i = 0; i < hash.Count(); i++)
+                    {
+                        if (hash[i] != userHash[i])
+                            throw new Exception();
+                    }
+
+                    tbUserName.Hide();
+                    tbPassword.Hide();
+                    btLogin.Hide();
+
+                    lbLogin.Visible = true;
+                    lbLogin.Text += userName;
+
+                }
+                catch(Exception exception)
+                {
+                    MessageBox.Show("Username-ul/parolele nu se potrivesc", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void tbUserName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -43,8 +43,11 @@ namespace Expenses_Manager
         public virtual DbSet<AchizitiiExtended> AchizitiiExtendeds { get; set; }
         public virtual DbSet<Cheltuieli> Cheltuielis { get; set; }
         public virtual DbSet<CheltuieliLunare> CheltuieliLunares { get; set; }
+        public virtual DbSet<ComenziEnhanced> ComenziEnhanceds { get; set; }
+        public virtual DbSet<ComenziExtended> ComenziExtendeds { get; set; }
         public virtual DbSet<FacturiEmise> FacturiEmises { get; set; }
         public virtual DbSet<FacturiPrimite> FacturiPrimites { get; set; }
+        public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
         public virtual DbSet<Salarii> Salariis { get; set; }
         public virtual DbSet<SalariiCurente> SalariiCurentes { get; set; }
     
@@ -107,6 +110,11 @@ namespace Expenses_Manager
         public virtual ObjectResult<CalculateProfitOriginal_Result> CalculateProfitOriginal()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfitOriginal_Result>("CalculateProfitOriginal");
+        }
+    
+        public virtual int IssueInvoice(ObjectParameter invoice_Id)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IssueInvoice", invoice_Id);
         }
     
         public virtual int MakeOrder(Nullable<int> employee_Id, Nullable<System.DateTime> estimated_Date, Nullable<int> client_Id)
