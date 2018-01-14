@@ -44,7 +44,7 @@ namespace Expenses_Manager
             this.lbLogin = new System.Windows.Forms.Label();
             this.dataGridViewComenzi = new System.Windows.Forms.DataGridView();
             this.btComenzi = new System.Windows.Forms.Button();
-            this.btProduse = new System.Windows.Forms.Button();
+            this.btAchizitii = new System.Windows.Forms.Button();
             this.btRaport = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
             this.btDataBase = new System.Windows.Forms.Button();
@@ -180,16 +180,17 @@ namespace Expenses_Manager
             this.btComenzi.Text = "Comenzi";
             this.btComenzi.UseVisualStyleBackColor = true;
             // 
-            // btProduse
+            // btAchizitii
             // 
-            this.btProduse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btProduse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btProduse.Location = new System.Drawing.Point(200, 399);
-            this.btProduse.Name = "btProduse";
-            this.btProduse.Size = new System.Drawing.Size(88, 27);
-            this.btProduse.TabIndex = 11;
-            this.btProduse.Text = "Produse";
-            this.btProduse.UseVisualStyleBackColor = true;
+            this.btAchizitii.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btAchizitii.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAchizitii.Location = new System.Drawing.Point(200, 399);
+            this.btAchizitii.Name = "btAchizitii";
+            this.btAchizitii.Size = new System.Drawing.Size(88, 27);
+            this.btAchizitii.TabIndex = 11;
+            this.btAchizitii.Text = "Achizitii";
+            this.btAchizitii.UseVisualStyleBackColor = true;
+            this.btAchizitii.Click += new System.EventHandler(this.btAchizitii_Click);
             // 
             // btRaport
             // 
@@ -232,7 +233,7 @@ namespace Expenses_Manager
             this.Controls.Add(this.btDataBase);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btRaport);
-            this.Controls.Add(this.btProduse);
+            this.Controls.Add(this.btAchizitii);
             this.Controls.Add(this.btComenzi);
             this.Controls.Add(this.dataGridViewComenzi);
             this.Controls.Add(this.lbLogin);
@@ -272,7 +273,7 @@ namespace Expenses_Manager
         private System.Windows.Forms.Label lbLogin;
         private System.Windows.Forms.DataGridView dataGridViewComenzi;
         private System.Windows.Forms.Button btComenzi;
-        private System.Windows.Forms.Button btProduse;
+        private System.Windows.Forms.Button btAchizitii;
         private System.Windows.Forms.Button btRaport;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Button btDataBase;

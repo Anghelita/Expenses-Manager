@@ -270,9 +270,10 @@ namespace Expenses_Manager
             MessageBox.Show("Baza de date a fost exportata");
         }
 
-        private void Grid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void btAchizitii_Click(object sender, EventArgs e)
         {
-            
+            Form form = new AchizitiiForm();
+            form.Show();
         }
     }
 }
