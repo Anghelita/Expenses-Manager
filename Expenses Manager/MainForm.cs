@@ -13,6 +13,8 @@ using ExcelLibrary.BinaryDrawingFormat;
 using ExcelLibrary.BinaryFileFormat;
 using ExcelLibrary.CompoundDocumentFormat;
 using ExcelLibrary.SpreadSheet;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace Expenses_Manager
 {
@@ -189,7 +191,7 @@ namespace Expenses_Manager
 
             worksheet = new Worksheet("Facturi primite");
 
-            worksheet.Cells[0, 0] = new Cell("Nr");
+            worksheet.Cells[0, 0] = new ExcelLibrary.SpreadSheet.Cell("Nr");
             worksheet.Cells[0, 1] = new Cell("Bani");
             worksheet.Cells[0, 2] = new Cell("Observatii");
             worksheet.Cells[0, 3] = new Cell("Data");
@@ -221,7 +223,56 @@ namespace Expenses_Manager
 
         private void btDataBase_Click(object sender, EventArgs e)
         {
+            using (var context = new HramulEntities())
+            {
+                var angajati = (from a in context.Salariis
+                                select a).ToList();
 
+                DataGridView grid = new DataGridView();
+                grid.DataSource = angajati;
+
+                Controls.Add(grid);
+                Controls.Remove(grid);
+
+                PdfPTable pdfTable = new PdfPTable(grid.ColumnCount);
+                pdfTable.DefaultCell.Padding = 3;
+                pdfTable.WidthPercentage = 60;
+                pdfTable.HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT;
+                pdfTable.DefaultCell.BorderWidth = 1;
+
+                foreach (DataGridViewColumn column in grid.Columns)
+                {
+                    PdfPCell cell = new PdfPCell(new iTextSharp.text.Phrase(column.HeaderText));
+                    cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                    pdfTable.AddCell(cell);
+                }
+
+                foreach (DataGridViewRow row in grid.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        pdfTable.AddCell(cell.Value.ToString());
+                    }
+                }
+
+                string file = "DataBaseExport.pdf";
+                using (FileStream stream = new FileStream(file, FileMode.Create))
+                {
+                    iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(iTextSharp.text.PageSize.A2, 10f, 10f, 10f, 0f);
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(pdfTable);
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+            }
+
+            MessageBox.Show("Baza de date a fost exportata");
+        }
+
+        private void Grid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            
         }
     }
 }
