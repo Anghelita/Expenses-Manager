@@ -97,14 +97,14 @@
     <Compile Include="Adds\AddClientForm.Designer.cs">
       <DependentUpon>AddClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Angajati.cs">
-      <DependentUpon>Hramul.tt</DependentUpon>
-    </Compile>
     <Compile Include="Adds\FacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Adds\FacturaForm.Designer.cs">
       <DependentUpon>FacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Angajati.cs">
+      <DependentUpon>Hramul.tt</DependentUpon>
     </Compile>
     <Compile Include="CalculateProfitOriginal_Result.cs">
       <DependentUpon>Hramul.tt</DependentUpon>
@@ -276,6 +276,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Clienti\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Hramul.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Hramul.edmx</DependentUpon>
@@ -286,9 +289,6 @@
       <DependentUpon>Hramul.edmx</DependentUpon>
       <LastGenOutput>Hramul.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clienti\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
