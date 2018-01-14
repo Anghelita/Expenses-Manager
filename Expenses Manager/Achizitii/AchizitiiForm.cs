@@ -345,5 +345,10 @@ namespace Expenses_Manager
         {
             refresh();
         }
+
+        private void achizitiiDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -88,6 +88,7 @@
             this.achizitiiDataGridView.ReadOnly = true;
             this.achizitiiDataGridView.Size = new System.Drawing.Size(1123, 339);
             this.achizitiiDataGridView.TabIndex = 3;
+            this.achizitiiDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.achizitiiDataGridView_CellContentClick);
             // 
             // panel1
             // 

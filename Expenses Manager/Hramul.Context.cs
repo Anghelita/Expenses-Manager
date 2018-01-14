@@ -40,10 +40,14 @@ namespace Expenses_Manager
         public virtual DbSet<State_de_plata> State_de_platas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<AchizitiiExtended> AchizitiiExtendeds { get; set; }
         public virtual DbSet<Cheltuieli> Cheltuielis { get; set; }
         public virtual DbSet<CheltuieliLunare> CheltuieliLunares { get; set; }
+        public virtual DbSet<ComenziEnhanced> ComenziEnhanceds { get; set; }
+        public virtual DbSet<ComenziExtended> ComenziExtendeds { get; set; }
         public virtual DbSet<FacturiEmise> FacturiEmises { get; set; }
         public virtual DbSet<FacturiPrimite> FacturiPrimites { get; set; }
+        public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
         public virtual DbSet<Salarii> Salariis { get; set; }
         public virtual DbSet<SalariiCurente> SalariiCurentes { get; set; }
     
@@ -108,7 +112,12 @@ namespace Expenses_Manager
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfitOriginal_Result>("CalculateProfitOriginal");
         }
     
-        public virtual int MakeOrder(Nullable<int> employee_Id, Nullable<System.DateTime> estimated_Date, Nullable<int> client_Id)
+        public virtual int IssueInvoice(ObjectParameter invoice_Id)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IssueInvoice", invoice_Id);
+        }
+    
+        public virtual int MakeOrder(Nullable<int> employee_Id, Nullable<System.DateTime> estimated_Date, Nullable<int> client_Id, ObjectParameter order_Id)
         {
             var employee_IdParameter = employee_Id.HasValue ?
                 new ObjectParameter("Employee_Id", employee_Id) :
@@ -122,7 +131,7 @@ namespace Expenses_Manager
                 new ObjectParameter("Client_Id", client_Id) :
                 new ObjectParameter("Client_Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MakeOrder", employee_IdParameter, estimated_DateParameter, client_IdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MakeOrder", employee_IdParameter, estimated_DateParameter, client_IdParameter, order_Id);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
