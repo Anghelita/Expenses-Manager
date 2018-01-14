@@ -40,6 +40,7 @@ namespace Expenses_Manager
         public virtual DbSet<State_de_plata> State_de_platas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<AchizitiiExtended> AchizitiiExtendeds { get; set; }
         public virtual DbSet<Cheltuieli> Cheltuielis { get; set; }
         public virtual DbSet<CheltuieliLunare> CheltuieliLunares { get; set; }
         public virtual DbSet<FacturiEmise> FacturiEmises { get; set; }
@@ -98,9 +99,14 @@ namespace Expenses_Manager
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CalculateExpenses");
         }
     
-        public virtual ObjectResult<CalculateProfit_Result> CalculateProfit(ObjectParameter cheltuieli, ObjectParameter castiguri)
+        public virtual int CalculateProfit(ObjectParameter cheltuieli, ObjectParameter castiguri)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfit_Result>("CalculateProfit", cheltuieli, castiguri);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CalculateProfit", cheltuieli, castiguri);
+        }
+    
+        public virtual ObjectResult<CalculateProfitOriginal_Result> CalculateProfitOriginal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfitOriginal_Result>("CalculateProfitOriginal");
         }
     
         public virtual int MakeOrder(Nullable<int> employee_Id, Nullable<System.DateTime> estimated_Date, Nullable<int> client_Id)

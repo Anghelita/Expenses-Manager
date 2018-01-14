@@ -41,15 +41,15 @@
             // 
             // dataGridView
             // 
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 38);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(647, 601);
+            this.dataGridView.Size = new System.Drawing.Size(860, 460);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseDown);
             // 
             // tbSearch
             // 
@@ -77,7 +77,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssNumarAngajati,
             this.tssTotalSalarii});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
             this.statusStrip1.TabIndex = 3;
@@ -97,18 +97,19 @@
             // 
             // btAdauga
             // 
-            this.btAdauga.Location = new System.Drawing.Point(681, 80);
+            this.btAdauga.Location = new System.Drawing.Point(12, 504);
             this.btAdauga.Name = "btAdauga";
-            this.btAdauga.Size = new System.Drawing.Size(191, 44);
+            this.btAdauga.Size = new System.Drawing.Size(125, 31);
             this.btAdauga.TabIndex = 4;
             this.btAdauga.Text = "Adauga";
             this.btAdauga.UseVisualStyleBackColor = true;
+            this.btAdauga.Click += new System.EventHandler(this.btAdauga_Click);
             // 
             // AngajatiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 661);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btAdauga);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btCauta);

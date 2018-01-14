@@ -16,18 +16,41 @@ namespace Expenses_Manager
         {
             InitializeComponent();
 
-            using (var context =new HramulEntities())
+            FillQuerries();
+        }
+
+        private void FillQuerries()
+        {
+            using (var context = new HramulEntities())
             {
-                var results = from a in context.SalariiCurentes
+                var results = from a in context.Angajatis
+                              join d in context.Departamentes
+                              on a.ID_DEPARTAMENT equals d.ID_DEPARTAMENT
+                              join s in context.State_de_platas
+                              on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                              where s.TIP_PLATA.Equals("SALARIU")
                               orderby a.Nume
-                              select a;
+                              select new
+                              {
+                                  a.ID_ANGAJAT,
+                                  a.Nume,
+                                  a.Prenume,
+                                  a.Adresa,
+                                  a.Rating,
+                                  a.Functie,
+                                  a.Activ,
+                                  d.Denumire,
+                                  s.Suma
+                              };
                 dataGridView.DataSource = results.ToList();
 
-                tssNumarAngajati.Text += (from a in context.Angajatis
+                tssNumarAngajati.Text = "Total Angajati: " +
+                                         (from a in context.Angajatis
                                           select a).Count();
 
-                tssTotalSalarii.Text += (from a in context.SalariiCurentes
-                                        select a.Salariu).Sum();
+                tssTotalSalarii.Text = "Total salarii: " + 
+                                        (from a in context.SalariiCurentes
+                                         select a.Salariu).Sum();
             }
         }
 
@@ -37,10 +60,26 @@ namespace Expenses_Manager
 
             using (var context = new HramulEntities())
             {
-                var results = (from a in context.SalariiCurentes
-                               orderby a.Nume
+                var results = (from a in context.Angajatis.DefaultIfEmpty()
+                               join d in context.Departamentes
+                               on a.ID_DEPARTAMENT equals d.ID_DEPARTAMENT
+                               join s in context.State_de_platas
+                               on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                               where s.TIP_PLATA.Equals("SALARIU")
                                where a.Nume.StartsWith(name)
-                               select a).ToList();
+                               orderby a.Nume
+                               select new
+                               {
+                                   a.ID_ANGAJAT,
+                                   a.Nume,
+                                   a.Prenume,
+                                   a.Adresa,
+                                   a.Rating,
+                                   a.Functie,
+                                   a.Activ,
+                                   d.Denumire,
+                                   s.Suma
+                               }).ToList();
 
                 if( results.Count == 0)
                 {
@@ -63,13 +102,45 @@ namespace Expenses_Manager
 
             using (var context = new HramulEntities())
             {
-                var results = (from a in context.SalariiCurentes
-                               orderby a.Nume
+                var results = (from a in context.Angajatis
+                               join d in context.Departamentes
+                               on a.ID_DEPARTAMENT equals d.ID_DEPARTAMENT
+                               join s in context.State_de_platas
+                               on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                               where s.TIP_PLATA.Equals("SALARIU")
                                where a.Nume.StartsWith(name)
-                               select a).ToList();
+                               orderby a.Nume
+                               select new
+                               {
+                                   a.ID_ANGAJAT,
+                                   a.Nume,
+                                   a.Prenume,
+                                   a.Adresa,
+                                   a.Rating,
+                                   a.Functie,
+                                   a.Activ,
+                                   d.Denumire,
+                                   s.Suma
+                               }).ToList();
 
                 dataGridView.DataSource = results;
             }
+        }
+
+        private void btAdauga_Click(object sender, EventArgs e)
+        {
+            Form form = new AdaugaAngajat();
+            form.ShowDialog();
+
+            FillQuerries();
+        }
+
+
+        private void dataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            int row = dataGridView.HitTest(e.X, e.Y).RowIndex;
+            var value = dataGridView.Rows[row].Cells[0].FormattedValue;
+            MessageBox.Show(value.ToString());
         }
     }
 }

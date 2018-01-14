@@ -38,8 +38,9 @@ namespace Expenses_Manager
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbAngajati = new System.Windows.Forms.Label();
             this.ssMain = new System.Windows.Forms.StatusStrip();
-            this.btAngajati = new System.Windows.Forms.Button();
             this.tssCheltuieli = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btAngajati = new System.Windows.Forms.Button();
+            this.tssCastiguri = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.ssMain.SuspendLayout();
             this.SuspendLayout();
@@ -103,11 +104,18 @@ namespace Expenses_Manager
             // ssMain
             // 
             this.ssMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssCheltuieli});
+            this.tssCheltuieli,
+            this.tssCastiguri});
             this.ssMain.Location = new System.Drawing.Point(0, 539);
             this.ssMain.Name = "ssMain";
             this.ssMain.Size = new System.Drawing.Size(984, 22);
             this.ssMain.TabIndex = 5;
+            // 
+            // tssCheltuieli
+            // 
+            this.tssCheltuieli.Name = "tssCheltuieli";
+            this.tssCheltuieli.Size = new System.Drawing.Size(63, 17);
+            this.tssCheltuieli.Text = "Cheltuieli: ";
             // 
             // btAngajati
             // 
@@ -121,11 +129,11 @@ namespace Expenses_Manager
             this.btAngajati.UseVisualStyleBackColor = true;
             this.btAngajati.Click += new System.EventHandler(this.btAngajati_Click);
             // 
-            // tssCheltuieli
+            // tssCastiguri
             // 
-            this.tssCheltuieli.Name = "tssCheltuieli";
-            this.tssCheltuieli.Size = new System.Drawing.Size(63, 17);
-            this.tssCheltuieli.Text = "Cheltuieli: ";
+            this.tssCastiguri.Name = "tssCastiguri";
+            this.tssCastiguri.Size = new System.Drawing.Size(60, 17);
+            this.tssCastiguri.Text = "Castiguri: ";
             // 
             // MainForm
             // 
@@ -163,5 +171,6 @@ namespace Expenses_Manager
         private System.Windows.Forms.StatusStrip ssMain;
         private System.Windows.Forms.Button btAngajati;
         private System.Windows.Forms.ToolStripStatusLabel tssCheltuieli;
+        private System.Windows.Forms.ToolStripStatusLabel tssCastiguri;
     }
 }

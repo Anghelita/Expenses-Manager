@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,13 @@ namespace Expenses_Manager
 
             using (var context = new HramulEntities())
             {
-                //tssCheltuieli.Text = from c in context.
+                ObjectParameter cheltuieli = new ObjectParameter("Cheltuieli", typeof(decimal));
+                ObjectParameter castiguri = new ObjectParameter("Castiguri", typeof(decimal));
+
+                context.CalculateProfit(cheltuieli,castiguri);
+
+                tssCheltuieli.Text += cheltuieli.Value;
+                tssCastiguri.Text += castiguri.Value;
                 
             }
         }
