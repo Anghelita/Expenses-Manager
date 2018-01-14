@@ -16,9 +16,11 @@ namespace Expenses_Manager
         public CreareContForm(int id_angajat)
         {
             InitializeComponent();
+
+            btInregistreaza.Click += (sender, e) => btInregistreaza_Click(id_angajat);
         }
 
-        private void btInregistreaza_Click(object sender, EventArgs e)
+        private void btInregistreaza_Click(int id_angajat)
         {
             string username = tbUtilizator.Text;
             string parola = tbParola.Text;
@@ -27,7 +29,8 @@ namespace Expenses_Manager
             User user = new User
             {
                 Username = username,
-                Password = hash
+                Password = hash,
+                ID_ANGAJAT = id_angajat
             };
 
             using (var context = new HramulEntities())
