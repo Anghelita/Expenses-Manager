@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Expenses_Manager</RootNamespace>
     <AssemblyName>Expenses Manager</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,133 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achizitii.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Achizitii\AchizitiiForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Achizitii\AchizitiiForm.Designer.cs">
-      <DependentUpon>AchizitiiForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Achizitii\AddDepozit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Achizitii\AddDepozit.Designer.cs">
-      <DependentUpon>AddDepozit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Achizitii\AddFurnizor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Achizitii\AddFurnizor.Designer.cs">
-      <DependentUpon>AddFurnizor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Angajati.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Achizitii\BucketList.cs" />
-    <Compile Include="Achizitii\BucketListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Achizitii\BucketListForm.Designer.cs">
-      <DependentUpon>BucketListForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CalculateProfit_Result.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cheltuieli.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CheltuieliLunare.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Clienti.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Comanda_Detalii.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
+      <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Comenzi.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Departamente.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Depozite.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Achizitii\FacturaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Achizitii\FacturaForm.Designer.cs">
-      <DependentUpon>FacturaForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Facturi.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FacturiEmise.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FacturiPrimite.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Furnizori.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HtamulModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HtamulModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HtamulModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HtamulModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HtamulModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Produse.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salarii.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="State_de_plata.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>HtamulModel.tt</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Achizitii\AchizitiiForm.resx">
-      <DependentUpon>AchizitiiForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Achizitii\AddDepozit.resx">
-      <DependentUpon>AddDepozit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Achizitii\AddFurnizor.resx">
-      <DependentUpon>AddFurnizor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Achizitii\BucketListForm.resx">
-      <DependentUpon>BucketListForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Achizitii\FacturaForm.resx">
-      <DependentUpon>FacturaForm.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -192,12 +78,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="HtamulModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HtamulModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="HtamulModel.edmx.diagram">
-      <DependentUpon>HtamulModel.edmx</DependentUpon>
+
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -217,15 +98,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HtamulModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HtamulModel.edmx</DependentUpon>
-      <LastGenOutput>HtamulModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="HtamulModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HtamulModel.edmx</DependentUpon>
-      <LastGenOutput>HtamulModel.cs</LastGenOutput>
+
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
