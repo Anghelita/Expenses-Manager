@@ -416,6 +416,11 @@ namespace Expenses_Manager
             refresh();
         }
 
+
+        private void achizitiiDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         private void numeProdusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadPretVanzare(numeProdusComboBox.Text);

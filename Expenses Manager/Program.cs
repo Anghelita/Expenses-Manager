@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Expenses_Manager
 {
     static class Program
@@ -16,12 +17,8 @@ namespace Expenses_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             Application.Run(new MainForm());
-<<<<<<< HEAD
-            //Application.Run(new AchizitiiForm());
-=======
->>>>>>> avram_branch
+
         }
     }
 }
