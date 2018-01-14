@@ -27,8 +27,6 @@ namespace Expenses_Manager
 
         private void btAngajati_Click(object sender, EventArgs e)
         {
-            Form form = new AngajatiForm();
-            form.Show();
         }
 
         private void tdUserName_MouseDown(object sender, MouseEventArgs e)
