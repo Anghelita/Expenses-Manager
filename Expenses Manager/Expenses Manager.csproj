@@ -66,12 +66,6 @@
     <Compile Include="Achizitii\AchizitiiForm.Designer.cs">
       <DependentUpon>AchizitiiForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddAchizitie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddAchizitie.Designer.cs">
-      <DependentUpon>AddAchizitie.cs</DependentUpon>
-    </Compile>
     <Compile Include="Adds\AddProdus.cs">
       <SubType>Form</SubType>
     </Compile>
