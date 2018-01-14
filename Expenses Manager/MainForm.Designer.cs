@@ -38,8 +38,9 @@ namespace Expenses_Manager
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbAngajati = new System.Windows.Forms.Label();
             this.ssMain = new System.Windows.Forms.StatusStrip();
-            this.btAngajati = new System.Windows.Forms.Button();
             this.tssCheltuieli = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btAngajati = new System.Windows.Forms.Button();
+            this.btAchizitii = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.ssMain.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +110,12 @@ namespace Expenses_Manager
             this.ssMain.Size = new System.Drawing.Size(984, 22);
             this.ssMain.TabIndex = 5;
             // 
+            // tssCheltuieli
+            // 
+            this.tssCheltuieli.Name = "tssCheltuieli";
+            this.tssCheltuieli.Size = new System.Drawing.Size(63, 17);
+            this.tssCheltuieli.Text = "Cheltuieli: ";
+            // 
             // btAngajati
             // 
             this.btAngajati.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -121,17 +128,22 @@ namespace Expenses_Manager
             this.btAngajati.UseVisualStyleBackColor = true;
             this.btAngajati.Click += new System.EventHandler(this.btAngajati_Click);
             // 
-            // tssCheltuieli
+            // btAchizitii
             // 
-            this.tssCheltuieli.Name = "tssCheltuieli";
-            this.tssCheltuieli.Size = new System.Drawing.Size(63, 17);
-            this.tssCheltuieli.Text = "Cheltuieli: ";
+            this.btAchizitii.Location = new System.Drawing.Point(738, 219);
+            this.btAchizitii.Name = "btAchizitii";
+            this.btAchizitii.Size = new System.Drawing.Size(75, 23);
+            this.btAchizitii.TabIndex = 8;
+            this.btAchizitii.Text = "Achizitii";
+            this.btAchizitii.UseVisualStyleBackColor = true;
+            this.btAchizitii.Click += new System.EventHandler(this.btAchizitii_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btAchizitii);
             this.Controls.Add(this.btAngajati);
             this.Controls.Add(this.ssMain);
             this.Controls.Add(this.lbAngajati);
@@ -163,5 +175,6 @@ namespace Expenses_Manager
         private System.Windows.Forms.StatusStrip ssMain;
         private System.Windows.Forms.Button btAngajati;
         private System.Windows.Forms.ToolStripStatusLabel tssCheltuieli;
+        private System.Windows.Forms.Button btAchizitii;
     }
 }
