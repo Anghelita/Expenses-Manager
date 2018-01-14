@@ -49,10 +49,5 @@ namespace Expenses_Manager
         {
             return context;
         }
-
-        public void SetAdressChangeable()
-        {
-            adresaTextBox.ReadOnly = false;
-        }
     }
 }

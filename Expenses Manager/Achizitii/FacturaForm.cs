@@ -17,7 +17,7 @@ namespace Expenses_Manager
         public String Tip { get; set; }
         public String Observatii { get; set; }
 
-        public bool Canceled { get; set; } = true;
+        public bool Canceled { get; set; }
 
         public FacturaForm(List<Bucket> bucket)
         {           
@@ -35,7 +35,7 @@ namespace Expenses_Manager
             }
             Date = dateTimePicker.Text;
             number = Convert.ToInt32(numarTextBox.Text);
-            Tip = "ITU";
+            Tip = numarTextBox.Text;
             Observatii = observatiiTextBox.Text;
 
             Canceled = false;

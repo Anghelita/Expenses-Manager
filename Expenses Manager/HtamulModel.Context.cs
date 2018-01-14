@@ -36,20 +36,14 @@ namespace Expenses_Manager
         public virtual DbSet<Depozite> Depozites { get; set; }
         public virtual DbSet<Facturi> Facturis { get; set; }
         public virtual DbSet<Furnizori> Furnizoris { get; set; }
+        public virtual DbSet<Produse> Produses { get; set; }
         public virtual DbSet<State_de_plata> State_de_platas { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Cheltuieli> Cheltuielis { get; set; }
         public virtual DbSet<CheltuieliLunare> CheltuieliLunares { get; set; }
         public virtual DbSet<FacturiEmise> FacturiEmises { get; set; }
         public virtual DbSet<FacturiPrimite> FacturiPrimites { get; set; }
         public virtual DbSet<Salarii> Salariis { get; set; }
-        public virtual DbSet<SalariiCurente> SalariiCurentes { get; set; }
-        public virtual DbSet<AchizitiiExtended> AchizitiiExtendeds { get; set; }
-        public virtual DbSet<ComenziEnhanced> ComenziEnhanceds { get; set; }
-        public virtual DbSet<ComenziExtended> ComenziExtendeds { get; set; }
-        public virtual DbSet<OrderDetailsExtended> OrderDetailsExtendeds { get; set; }
-        public virtual DbSet<Produse> Produses { get; set; }
     
         public virtual int AddOrderPart(Nullable<int> order_Id, Nullable<int> product_Id, Nullable<int> quantity)
         {
@@ -102,14 +96,9 @@ namespace Expenses_Manager
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CalculateExpenses");
         }
     
-        public virtual int CalculateProfit(ObjectParameter cheltuieli, ObjectParameter castiguri)
+        public virtual ObjectResult<CalculateProfit_Result> CalculateProfit()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CalculateProfit", cheltuieli, castiguri);
-        }
-    
-        public virtual ObjectResult<CalculateProfitOriginal_Result> CalculateProfitOriginal()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfitOriginal_Result>("CalculateProfitOriginal");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CalculateProfit_Result>("CalculateProfit");
         }
     
         public virtual int MakeOrder(Nullable<int> employee_Id, Nullable<System.DateTime> estimated_Date, Nullable<int> client_Id)
@@ -230,11 +219,6 @@ namespace Expenses_Manager
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual int IssueInvoice(ObjectParameter invoice_Id)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IssueInvoice", invoice_Id);
         }
     }
 }

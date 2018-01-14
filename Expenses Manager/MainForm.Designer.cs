@@ -39,10 +39,6 @@ namespace Expenses_Manager
             this.lbAngajati = new System.Windows.Forms.Label();
             this.ssMain = new System.Windows.Forms.StatusStrip();
             this.tssCheltuieli = new System.Windows.Forms.ToolStripStatusLabel();
-<<<<<<< HEAD
-            this.btAngajati = new System.Windows.Forms.Button();
-            this.btAchizitii = new System.Windows.Forms.Button();
-=======
             this.tssCastiguri = new System.Windows.Forms.ToolStripStatusLabel();
             this.btAngajati = new System.Windows.Forms.Button();
             this.lbLogin = new System.Windows.Forms.Label();
@@ -52,7 +48,6 @@ namespace Expenses_Manager
             this.btRaport = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
             this.btDataBase = new System.Windows.Forms.Button();
->>>>>>> avram_branch
             this.menuStrip.SuspendLayout();
             this.ssMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComenzi)).BeginInit();
@@ -133,15 +128,12 @@ namespace Expenses_Manager
             this.tssCheltuieli.Size = new System.Drawing.Size(63, 17);
             this.tssCheltuieli.Text = "Cheltuieli: ";
             // 
-<<<<<<< HEAD
-=======
             // tssCastiguri
             // 
             this.tssCastiguri.Name = "tssCastiguri";
             this.tssCastiguri.Size = new System.Drawing.Size(60, 17);
             this.tssCastiguri.Text = "Castiguri: ";
             // 
->>>>>>> avram_branch
             // btAngajati
             // 
             this.btAngajati.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -154,17 +146,6 @@ namespace Expenses_Manager
             this.btAngajati.UseVisualStyleBackColor = true;
             this.btAngajati.Click += new System.EventHandler(this.btAngajati_Click);
             // 
-<<<<<<< HEAD
-            // btAchizitii
-            // 
-            this.btAchizitii.Location = new System.Drawing.Point(738, 219);
-            this.btAchizitii.Name = "btAchizitii";
-            this.btAchizitii.Size = new System.Drawing.Size(75, 23);
-            this.btAchizitii.TabIndex = 8;
-            this.btAchizitii.Text = "Achizitii";
-            this.btAchizitii.UseVisualStyleBackColor = true;
-            this.btAchizitii.Click += new System.EventHandler(this.btAchizitii_Click);
-=======
             // lbLogin
             // 
             this.lbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -243,16 +224,11 @@ namespace Expenses_Manager
             this.btDataBase.Text = "DataBase";
             this.btDataBase.UseVisualStyleBackColor = true;
             this.btDataBase.Click += new System.EventHandler(this.btDataBase_Click);
->>>>>>> avram_branch
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(984, 561);
-            this.Controls.Add(this.btAchizitii);
-=======
             this.ClientSize = new System.Drawing.Size(884, 452);
             this.Controls.Add(this.btDataBase);
             this.Controls.Add(this.lbDate);
@@ -261,7 +237,6 @@ namespace Expenses_Manager
             this.Controls.Add(this.btComenzi);
             this.Controls.Add(this.dataGridViewComenzi);
             this.Controls.Add(this.lbLogin);
->>>>>>> avram_branch
             this.Controls.Add(this.btAngajati);
             this.Controls.Add(this.ssMain);
             this.Controls.Add(this.lbAngajati);
@@ -294,9 +269,6 @@ namespace Expenses_Manager
         private System.Windows.Forms.StatusStrip ssMain;
         private System.Windows.Forms.Button btAngajati;
         private System.Windows.Forms.ToolStripStatusLabel tssCheltuieli;
-<<<<<<< HEAD
-        private System.Windows.Forms.Button btAchizitii;
-=======
         private System.Windows.Forms.ToolStripStatusLabel tssCastiguri;
         private System.Windows.Forms.Label lbLogin;
         private System.Windows.Forms.DataGridView dataGridViewComenzi;
@@ -305,6 +277,5 @@ namespace Expenses_Manager
         private System.Windows.Forms.Button btRaport;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Button btDataBase;
->>>>>>> avram_branch
     }
 }
