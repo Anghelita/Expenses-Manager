@@ -1,0 +1,1287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HramulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Achizitii">
+          <Key>
+            <PropertyRef Name="ID_ACHIZITIE" />
+          </Key>
+          <Property Name="ID_ACHIZITIE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PRODUS" Type="int" />
+          <Property Name="Numar de bucati" Type="int" />
+          <Property Name="ID_FACTURA" Type="int" />
+          <Property Name="Pret Unitar" Type="money" />
+          <Property Name="ID_DEPOZIT" Type="int" />
+          <Property Name="ID_FURNIZOR" Type="int" />
+        </EntityType>
+        <EntityType Name="Angajati">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="150" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Functie" Type="nvarchar" MaxLength="30" />
+          <Property Name="Activ" Type="bit" />
+          <Property Name="ID_DEPARTAMENT" Type="int" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="ID_CLIENT" />
+          </Key>
+          <Property Name="ID_CLIENT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Comanda Detalii">
+          <Key>
+            <PropertyRef Name="ID_COMANDA_DETALII" />
+          </Key>
+          <Property Name="ID_COMANDA_DETALII" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_COMANDA" Type="int" />
+          <Property Name="ID_PRODUS" Type="int" />
+          <Property Name="Suma" Type="money" />
+          <Property Name="Cantitate" Type="int" />
+        </EntityType>
+        <EntityType Name="Comenzi">
+          <Key>
+            <PropertyRef Name="ID_COMANDA" />
+          </Key>
+          <Property Name="ID_COMANDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data initiere" Type="datetime" />
+          <Property Name="ID_FACTURA" Type="int" />
+          <Property Name="ID_ANGAJAT" Type="int" />
+          <Property Name="Data estimata livrare" Type="datetime" />
+          <Property Name="Status" Type="nchar" MaxLength="20" />
+          <Property Name="ID_CLIENT" Type="int" />
+        </EntityType>
+        <EntityType Name="Departamente">
+          <Key>
+            <PropertyRef Name="ID_DEPARTAMENT" />
+          </Key>
+          <Property Name="ID_DEPARTAMENT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Depozite">
+          <Key>
+            <PropertyRef Name="ID_DEPOZIT" />
+          </Key>
+          <Property Name="ID_DEPOZIT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Facturi">
+          <Key>
+            <PropertyRef Name="ID_FACTURA" />
+          </Key>
+          <Property Name="ID_FACTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="Nr" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="nchar" MaxLength="10" />
+          <Property Name="Observatii" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Furnizori">
+          <Key>
+            <PropertyRef Name="ID_FURNIZOR" />
+          </Key>
+          <Property Name="ID_FURNIZOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="150" />
+          <Property Name="CUI" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="ID_PRODUS" />
+          </Key>
+          <Property Name="ID_PRODUS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stoc" Type="int" />
+          <Property Name="Pret Unitar" Type="money" />
+        </EntityType>
+        <EntityType Name="State de plata">
+          <Key>
+            <PropertyRef Name="ID_PLATA" />
+          </Key>
+          <Property Name="ID_PLATA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ANGAJAT" Type="int" />
+          <Property Name="Suma" Type="money" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="TIP_PLATA" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ANGAJAT" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Hramul.dbo.Balanta' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Balanta">
+          <Property Name="Cheltuieli" Type="money" />
+          <Property Name="Castiguri" Type="money" />
+          <Property Name="Profit" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Hramul.dbo.Castiguri' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Castiguri">
+          <Property Name="Bani" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.Cheltuieli' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Cheltuieli">
+          <Key>
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Bani" Type="money" />
+          <Property Name="Tip" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.CheltuieliLunare' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CheltuieliLunare">
+          <Key>
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Bani" Type="money" />
+          <Property Name="Tip" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.FacturiEmise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacturiEmise">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Nr" Type="int" Nullable="false" />
+          <Property Name="Bani" Type="money" />
+          <Property Name="Observatii" Type="nvarchar" MaxLength="150" />
+          <Property Name="Data" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.FacturiPrimite' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacturiPrimite">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Nr" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="Bani" Type="money" />
+          <Property Name="Observatii" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.Salarii' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Salarii">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="int" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Functie" Type="nvarchar" MaxLength="30" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Salariu" Type="money" />
+          <Property Name="Data" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Hramul.dbo.SalariiCurente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalariiCurente">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="int" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="50" />
+          <Property Name="Functie" Type="nvarchar" MaxLength="30" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Salariu" Type="money" />
+        </EntityType>
+        <Association Name="FK__Achizitii__ID_DE__5535A963">
+          <End Role="Depozite" Type="Self.Depozite" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depozite">
+              <PropertyRef Name="ID_DEPOZIT" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_DEPOZIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Achizitii__ID_FU__534D60F1">
+          <End Role="Furnizori" Type="Self.Furnizori" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Furnizori">
+              <PropertyRef Name="ID_FURNIZOR" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_FURNIZOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cumparari__ID_FA__412EB0B6">
+          <End Role="Facturi" Type="Self.Facturi" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cumparari__ID_PR__403A8C7D">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plati ang__ID_AN__45F365D3">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="State de plata" Type="Self.State de plata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="State de plata">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vanzari__ID_CLIE__3D5E1FD2">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="ID_CLIENT" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Angajati_Departamente">
+          <End Role="Departamente" Type="Self.Departamente" Multiplicity="0..1" />
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamente">
+              <PropertyRef Name="ID_DEPARTAMENT" />
+            </Principal>
+            <Dependent Role="Angajati">
+              <PropertyRef Name="ID_DEPARTAMENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comanda Detalii_Comenzi">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="0..1" />
+          <End Role="Comanda Detalii" Type="Self.Comanda Detalii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="ID_COMANDA" />
+            </Principal>
+            <Dependent Role="Comanda Detalii">
+              <PropertyRef Name="ID_COMANDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comanda Detalii_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Comanda Detalii" Type="Self.Comanda Detalii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Comanda Detalii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Angajati">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Facturi">
+          <End Role="Facturi" Type="Self.Facturi" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Angajati">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddOrderPart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Order_Id" Type="int" Mode="In" />
+          <Parameter Name="Product_Id" Type="int" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BuyItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Product_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Count" Type="int" Mode="In" />
+          <Parameter Name="Invoice_Number" Type="int" Mode="In" />
+          <Parameter Name="Unit_Price" Type="money" Mode="In" />
+          <Parameter Name="Warehouse_Id" Type="int" Mode="In" />
+          <Parameter Name="Supplier_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CalculateExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CalculateProfit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cheltuieli" Type="money" Mode="InOut" />
+          <Parameter Name="Castiguri" Type="money" Mode="InOut" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="MakeOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Employee_Id" Type="int" Mode="In" />
+          <Parameter Name="Estimated_Date" Type="datetime" Mode="In" />
+          <Parameter Name="Client_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="HramulModelStoreContainer">
+          <EntitySet Name="Achizitii" EntityType="Self.Achizitii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Angajati" EntityType="Self.Angajati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comanda Detalii" EntityType="Self.Comanda Detalii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comenzi" EntityType="Self.Comenzi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamente" EntityType="Self.Departamente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Depozite" EntityType="Self.Depozite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturi" EntityType="Self.Facturi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Furnizori" EntityType="Self.Furnizori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produse" EntityType="Self.Produse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State de plata" EntityType="Self.State de plata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cheltuieli" EntityType="Self.Cheltuieli" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Cheltuieli].[Bani] AS [Bani], 
+    [Cheltuieli].[Tip] AS [Tip]
+    FROM [dbo].[Cheltuieli] AS [Cheltuieli]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CheltuieliLunare" EntityType="Self.CheltuieliLunare" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CheltuieliLunare].[Bani] AS [Bani], 
+    [CheltuieliLunare].[Tip] AS [Tip]
+    FROM [dbo].[CheltuieliLunare] AS [CheltuieliLunare]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FacturiEmise" EntityType="Self.FacturiEmise" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacturiEmise].[Nr] AS [Nr], 
+    [FacturiEmise].[Bani] AS [Bani], 
+    [FacturiEmise].[Observatii] AS [Observatii], 
+    [FacturiEmise].[Data] AS [Data]
+    FROM [dbo].[FacturiEmise] AS [FacturiEmise]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FacturiPrimite" EntityType="Self.FacturiPrimite" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacturiPrimite].[Nr] AS [Nr], 
+    [FacturiPrimite].[Data] AS [Data], 
+    [FacturiPrimite].[Bani] AS [Bani], 
+    [FacturiPrimite].[Observatii] AS [Observatii]
+    FROM [dbo].[FacturiPrimite] AS [FacturiPrimite]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Salarii" EntityType="Self.Salarii" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Salarii].[ID_ANGAJAT] AS [ID_ANGAJAT], 
+    [Salarii].[Nume] AS [Nume], 
+    [Salarii].[Prenume] AS [Prenume], 
+    [Salarii].[Functie] AS [Functie], 
+    [Salarii].[Rating] AS [Rating], 
+    [Salarii].[Salariu] AS [Salariu], 
+    [Salarii].[Data] AS [Data]
+    FROM [dbo].[Salarii] AS [Salarii]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SalariiCurente" EntityType="Self.SalariiCurente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalariiCurente].[ID_ANGAJAT] AS [ID_ANGAJAT], 
+    [SalariiCurente].[Nume] AS [Nume], 
+    [SalariiCurente].[Prenume] AS [Prenume], 
+    [SalariiCurente].[Functie] AS [Functie], 
+    [SalariiCurente].[Rating] AS [Rating], 
+    [SalariiCurente].[Salariu] AS [Salariu]
+    FROM [dbo].[SalariiCurente] AS [SalariiCurente]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Achizitii__ID_DE__5535A963" Association="Self.FK__Achizitii__ID_DE__5535A963">
+            <End Role="Depozite" EntitySet="Depozite" />
+            <End Role="Achizitii" EntitySet="Achizitii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Achizitii__ID_FU__534D60F1" Association="Self.FK__Achizitii__ID_FU__534D60F1">
+            <End Role="Furnizori" EntitySet="Furnizori" />
+            <End Role="Achizitii" EntitySet="Achizitii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cumparari__ID_FA__412EB0B6" Association="Self.FK__Cumparari__ID_FA__412EB0B6">
+            <End Role="Facturi" EntitySet="Facturi" />
+            <End Role="Achizitii" EntitySet="Achizitii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cumparari__ID_PR__403A8C7D" Association="Self.FK__Cumparari__ID_PR__403A8C7D">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Achizitii" EntitySet="Achizitii" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plati ang__ID_AN__45F365D3" Association="Self.FK__Plati ang__ID_AN__45F365D3">
+            <End Role="Angajati" EntitySet="Angajati" />
+            <End Role="State de plata" EntitySet="State de plata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vanzari__ID_CLIE__3D5E1FD2" Association="Self.FK__Vanzari__ID_CLIE__3D5E1FD2">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Comenzi" EntitySet="Comenzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Angajati_Departamente" Association="Self.FK_Angajati_Departamente">
+            <End Role="Departamente" EntitySet="Departamente" />
+            <End Role="Angajati" EntitySet="Angajati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comanda Detalii_Comenzi" Association="Self.FK_Comanda Detalii_Comenzi">
+            <End Role="Comenzi" EntitySet="Comenzi" />
+            <End Role="Comanda Detalii" EntitySet="Comanda Detalii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comanda Detalii_Produse" Association="Self.FK_Comanda Detalii_Produse">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Comanda Detalii" EntitySet="Comanda Detalii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Angajati" Association="Self.FK_Comenzi_Angajati">
+            <End Role="Angajati" EntitySet="Angajati" />
+            <End Role="Comenzi" EntitySet="Comenzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Facturi" Association="Self.FK_Comenzi_Facturi">
+            <End Role="Facturi" EntitySet="Facturi" />
+            <End Role="Comenzi" EntitySet="Comenzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Angajati" Association="Self.FK_Users_Angajati">
+            <End Role="Angajati" EntitySet="Angajati" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HramulModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Achizitii">
+          <Key>
+            <PropertyRef Name="ID_ACHIZITIE" />
+          </Key>
+          <Property Name="ID_ACHIZITIE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PRODUS" Type="Int32" />
+          <Property Name="Numar_de_bucati" Type="Int32" />
+          <Property Name="ID_FACTURA" Type="Int32" />
+          <Property Name="Pret_Unitar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ID_DEPOZIT" Type="Int32" />
+          <Property Name="ID_FURNIZOR" Type="Int32" />
+          <NavigationProperty Name="Depozite" Relationship="Self.FK__Achizitii__ID_DE__5535A963" FromRole="Achizitii" ToRole="Depozite" />
+          <NavigationProperty Name="Furnizori" Relationship="Self.FK__Achizitii__ID_FU__534D60F1" FromRole="Achizitii" ToRole="Furnizori" />
+          <NavigationProperty Name="Facturi" Relationship="Self.FK__Cumparari__ID_FA__412EB0B6" FromRole="Achizitii" ToRole="Facturi" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK__Cumparari__ID_PR__403A8C7D" FromRole="Achizitii" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Angajati">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Functie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Activ" Type="Boolean" />
+          <Property Name="ID_DEPARTAMENT" Type="Int32" />
+          <NavigationProperty Name="State_de_plata" Relationship="Self.FK__Plati_ang__ID_AN__45F365D3" FromRole="Angajati" ToRole="State_de_plata" />
+          <NavigationProperty Name="Departamente" Relationship="Self.FK_Angajati_Departamente" FromRole="Angajati" ToRole="Departamente" />
+          <NavigationProperty Name="Comenzis" Relationship="Self.FK_Comenzi_Angajati" FromRole="Angajati" ToRole="Comenzi" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Angajati" FromRole="Angajati" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="ID_CLIENT" />
+          </Key>
+          <Property Name="ID_CLIENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comenzis" Relationship="Self.FK__Vanzari__ID_CLIE__3D5E1FD2" FromRole="Clienti" ToRole="Comenzi" />
+        </EntityType>
+        <EntityType Name="Comanda_Detalii">
+          <Key>
+            <PropertyRef Name="ID_COMANDA_DETALII" />
+          </Key>
+          <Property Name="ID_COMANDA_DETALII" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_COMANDA" Type="Int32" />
+          <Property Name="ID_PRODUS" Type="Int32" />
+          <Property Name="Suma" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cantitate" Type="Int32" />
+          <NavigationProperty Name="Comenzi" Relationship="Self.FK_Comanda_Detalii_Comenzi" FromRole="Comanda_Detalii" ToRole="Comenzi" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK_Comanda_Detalii_Produse" FromRole="Comanda_Detalii" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Comenzi">
+          <Key>
+            <PropertyRef Name="ID_COMANDA" />
+          </Key>
+          <Property Name="ID_COMANDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_initiere" Type="DateTime" Precision="3" />
+          <Property Name="ID_FACTURA" Type="Int32" />
+          <Property Name="ID_ANGAJAT" Type="Int32" />
+          <Property Name="Data_estimata_livrare" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ID_CLIENT" Type="Int32" />
+          <NavigationProperty Name="Angajati" Relationship="Self.FK_Comenzi_Angajati" FromRole="Comenzi" ToRole="Angajati" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK__Vanzari__ID_CLIE__3D5E1FD2" FromRole="Comenzi" ToRole="Clienti" />
+          <NavigationProperty Name="Comanda_Detalii" Relationship="Self.FK_Comanda_Detalii_Comenzi" FromRole="Comenzi" ToRole="Comanda_Detalii" />
+          <NavigationProperty Name="Facturi" Relationship="Self.FK_Comenzi_Facturi" FromRole="Comenzi" ToRole="Facturi" />
+        </EntityType>
+        <EntityType Name="Departamente">
+          <Key>
+            <PropertyRef Name="ID_DEPARTAMENT" />
+          </Key>
+          <Property Name="ID_DEPARTAMENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Angajatis" Relationship="Self.FK_Angajati_Departamente" FromRole="Departamente" ToRole="Angajati" />
+        </EntityType>
+        <EntityType Name="Depozite">
+          <Key>
+            <PropertyRef Name="ID_DEPOZIT" />
+          </Key>
+          <Property Name="ID_DEPOZIT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Achizitii__ID_DE__5535A963" FromRole="Depozite" ToRole="Achizitii" />
+        </EntityType>
+        <EntityType Name="Facturi">
+          <Key>
+            <PropertyRef Name="ID_FACTURA" />
+          </Key>
+          <Property Name="ID_FACTURA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Observatii" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Cumparari__ID_FA__412EB0B6" FromRole="Facturi" ToRole="Achizitii" />
+          <NavigationProperty Name="Comenzis" Relationship="Self.FK_Comenzi_Facturi" FromRole="Facturi" ToRole="Comenzi" />
+        </EntityType>
+        <EntityType Name="Furnizori">
+          <Key>
+            <PropertyRef Name="ID_FURNIZOR" />
+          </Key>
+          <Property Name="ID_FURNIZOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CUI" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Achizitii__ID_FU__534D60F1" FromRole="Furnizori" ToRole="Achizitii" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="ID_PRODUS" />
+          </Key>
+          <Property Name="ID_PRODUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stoc" Type="Int32" />
+          <Property Name="Pret_Unitar" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Achizitiis" Relationship="Self.FK__Cumparari__ID_PR__403A8C7D" FromRole="Produse" ToRole="Achizitii" />
+          <NavigationProperty Name="Comanda_Detalii" Relationship="Self.FK_Comanda_Detalii_Produse" FromRole="Produse" ToRole="Comanda_Detalii" />
+        </EntityType>
+        <EntityType Name="State_de_plata">
+          <Key>
+            <PropertyRef Name="ID_PLATA" />
+          </Key>
+          <Property Name="ID_PLATA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ANGAJAT" Type="Int32" />
+          <Property Name="Suma" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="TIP_PLATA" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Angajati" Relationship="Self.FK__Plati_ang__ID_AN__45F365D3" FromRole="State_de_plata" ToRole="Angajati" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ANGAJAT" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Angajati" Relationship="Self.FK_Users_Angajati" FromRole="Users" ToRole="Angajati" />
+        </EntityType>
+        <EntityType Name="Cheltuieli">
+          <Key>
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Bani" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tip" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CheltuieliLunare">
+          <Key>
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Bani" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Tip" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacturiEmise">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+          <Property Name="Bani" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Observatii" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FacturiPrimite">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="Bani" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Observatii" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Salarii">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="Int32" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Functie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Salariu" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SalariiCurente">
+          <Key>
+            <PropertyRef Name="ID_ANGAJAT" />
+          </Key>
+          <Property Name="ID_ANGAJAT" Type="Int32" Nullable="false" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Functie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Salariu" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK__Achizitii__ID_DE__5535A963">
+          <End Role="Depozite" Type="Self.Depozite" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depozite">
+              <PropertyRef Name="ID_DEPOZIT" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_DEPOZIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Achizitii__ID_FU__534D60F1">
+          <End Role="Furnizori" Type="Self.Furnizori" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Furnizori">
+              <PropertyRef Name="ID_FURNIZOR" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_FURNIZOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cumparari__ID_FA__412EB0B6">
+          <End Role="Facturi" Type="Self.Facturi" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cumparari__ID_PR__403A8C7D">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Achizitii" Type="Self.Achizitii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Achizitii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Plati_ang__ID_AN__45F365D3">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="State_de_plata" Type="Self.State_de_plata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="State_de_plata">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Angajati_Departamente">
+          <End Role="Departamente" Type="Self.Departamente" Multiplicity="0..1" />
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamente">
+              <PropertyRef Name="ID_DEPARTAMENT" />
+            </Principal>
+            <Dependent Role="Angajati">
+              <PropertyRef Name="ID_DEPARTAMENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Angajati">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Angajati">
+          <End Role="Angajati" Type="Self.Angajati" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Angajati">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ID_ANGAJAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vanzari__ID_CLIE__3D5E1FD2">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="ID_CLIENT" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comanda_Detalii_Comenzi">
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="0..1" />
+          <End Role="Comanda_Detalii" Type="Self.Comanda_Detalii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comenzi">
+              <PropertyRef Name="ID_COMANDA" />
+            </Principal>
+            <Dependent Role="Comanda_Detalii">
+              <PropertyRef Name="ID_COMANDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comanda_Detalii_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Comanda_Detalii" Type="Self.Comanda_Detalii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="ID_PRODUS" />
+            </Principal>
+            <Dependent Role="Comanda_Detalii">
+              <PropertyRef Name="ID_PRODUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comenzi_Facturi">
+          <End Role="Facturi" Type="Self.Facturi" Multiplicity="0..1" />
+          <End Role="Comenzi" Type="Self.Comenzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Principal>
+            <Dependent Role="Comenzi">
+              <PropertyRef Name="ID_FACTURA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HramulEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achizitiis" EntityType="Self.Achizitii" />
+          <EntitySet Name="Angajatis" EntityType="Self.Angajati" />
+          <EntitySet Name="Clientis" EntityType="Self.Clienti" />
+          <EntitySet Name="Comanda_Detaliis" EntityType="Self.Comanda_Detalii" />
+          <EntitySet Name="Comenzis" EntityType="Self.Comenzi" />
+          <EntitySet Name="Departamentes" EntityType="Self.Departamente" />
+          <EntitySet Name="Depozites" EntityType="Self.Depozite" />
+          <EntitySet Name="Facturis" EntityType="Self.Facturi" />
+          <EntitySet Name="Furnizoris" EntityType="Self.Furnizori" />
+          <EntitySet Name="Produses" EntityType="Self.Produse" />
+          <EntitySet Name="State_de_platas" EntityType="Self.State_de_plata" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Cheltuielis" EntityType="Self.Cheltuieli" />
+          <EntitySet Name="CheltuieliLunares" EntityType="Self.CheltuieliLunare" />
+          <EntitySet Name="FacturiEmises" EntityType="Self.FacturiEmise" />
+          <EntitySet Name="FacturiPrimites" EntityType="Self.FacturiPrimite" />
+          <EntitySet Name="Salariis" EntityType="Self.Salarii" />
+          <EntitySet Name="SalariiCurentes" EntityType="Self.SalariiCurente" />
+          <AssociationSet Name="FK__Achizitii__ID_DE__5535A963" Association="Self.FK__Achizitii__ID_DE__5535A963">
+            <End Role="Depozite" EntitySet="Depozites" />
+            <End Role="Achizitii" EntitySet="Achizitiis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Achizitii__ID_FU__534D60F1" Association="Self.FK__Achizitii__ID_FU__534D60F1">
+            <End Role="Furnizori" EntitySet="Furnizoris" />
+            <End Role="Achizitii" EntitySet="Achizitiis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cumparari__ID_FA__412EB0B6" Association="Self.FK__Cumparari__ID_FA__412EB0B6">
+            <End Role="Facturi" EntitySet="Facturis" />
+            <End Role="Achizitii" EntitySet="Achizitiis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cumparari__ID_PR__403A8C7D" Association="Self.FK__Cumparari__ID_PR__403A8C7D">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Achizitii" EntitySet="Achizitiis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Plati_ang__ID_AN__45F365D3" Association="Self.FK__Plati_ang__ID_AN__45F365D3">
+            <End Role="Angajati" EntitySet="Angajatis" />
+            <End Role="State_de_plata" EntitySet="State_de_platas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Angajati_Departamente" Association="Self.FK_Angajati_Departamente">
+            <End Role="Departamente" EntitySet="Departamentes" />
+            <End Role="Angajati" EntitySet="Angajatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Angajati" Association="Self.FK_Comenzi_Angajati">
+            <End Role="Angajati" EntitySet="Angajatis" />
+            <End Role="Comenzi" EntitySet="Comenzis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Angajati" Association="Self.FK_Users_Angajati">
+            <End Role="Angajati" EntitySet="Angajatis" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vanzari__ID_CLIE__3D5E1FD2" Association="Self.FK__Vanzari__ID_CLIE__3D5E1FD2">
+            <End Role="Clienti" EntitySet="Clientis" />
+            <End Role="Comenzi" EntitySet="Comenzis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comanda_Detalii_Comenzi" Association="Self.FK_Comanda_Detalii_Comenzi">
+            <End Role="Comenzi" EntitySet="Comenzis" />
+            <End Role="Comanda_Detalii" EntitySet="Comanda_Detaliis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comanda_Detalii_Produse" Association="Self.FK_Comanda_Detalii_Produse">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Comanda_Detalii" EntitySet="Comanda_Detaliis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comenzi_Facturi" Association="Self.FK_Comenzi_Facturi">
+            <End Role="Facturi" EntitySet="Facturis" />
+            <End Role="Comenzi" EntitySet="Comenzis" />
+          </AssociationSet>
+          <FunctionImport Name="AddOrderPart">
+            <Parameter Name="Order_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Product_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BuyItem">
+            <Parameter Name="Product_Name" Mode="In" Type="String" />
+            <Parameter Name="Count" Mode="In" Type="Int32" />
+            <Parameter Name="Invoice_Number" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Warehouse_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Supplier_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CalculateExpenses" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="CalculateProfit" ReturnType="Collection(HramulModel.CalculateProfit_Result)">
+            <Parameter Name="Cheltuieli" Mode="InOut" Type="Decimal" />
+            <Parameter Name="Castiguri" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="MakeOrder">
+            <Parameter Name="Employee_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Estimated_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Client_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(HramulModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(HramulModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="CalculateProfit_Result">
+          <Property Type="Decimal" Name="Profit" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Castiguri" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Cheltuieli" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HramulModelStoreContainer" CdmEntityContainer="HramulEntities">
+          <EntitySetMapping Name="Achizitiis">
+            <EntityTypeMapping TypeName="HramulModel.Achizitii">
+              <MappingFragment StoreEntitySet="Achizitii">
+                <ScalarProperty Name="ID_ACHIZITIE" ColumnName="ID_ACHIZITIE" />
+                <ScalarProperty Name="ID_PRODUS" ColumnName="ID_PRODUS" />
+                <ScalarProperty Name="Numar_de_bucati" ColumnName="Numar de bucati" />
+                <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+                <ScalarProperty Name="Pret_Unitar" ColumnName="Pret Unitar" />
+                <ScalarProperty Name="ID_DEPOZIT" ColumnName="ID_DEPOZIT" />
+                <ScalarProperty Name="ID_FURNIZOR" ColumnName="ID_FURNIZOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Angajatis">
+            <EntityTypeMapping TypeName="HramulModel.Angajati">
+              <MappingFragment StoreEntitySet="Angajati">
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Functie" ColumnName="Functie" />
+                <ScalarProperty Name="Activ" ColumnName="Activ" />
+                <ScalarProperty Name="ID_DEPARTAMENT" ColumnName="ID_DEPARTAMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientis">
+            <EntityTypeMapping TypeName="HramulModel.Clienti">
+              <MappingFragment StoreEntitySet="Clienti">
+                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comanda_Detaliis">
+            <EntityTypeMapping TypeName="HramulModel.Comanda_Detalii">
+              <MappingFragment StoreEntitySet="Comanda Detalii">
+                <ScalarProperty Name="ID_COMANDA_DETALII" ColumnName="ID_COMANDA_DETALII" />
+                <ScalarProperty Name="ID_COMANDA" ColumnName="ID_COMANDA" />
+                <ScalarProperty Name="ID_PRODUS" ColumnName="ID_PRODUS" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comenzis">
+            <EntityTypeMapping TypeName="HramulModel.Comenzi">
+              <MappingFragment StoreEntitySet="Comenzi">
+                <ScalarProperty Name="ID_COMANDA" ColumnName="ID_COMANDA" />
+                <ScalarProperty Name="Data_initiere" ColumnName="Data initiere" />
+                <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Data_estimata_livrare" ColumnName="Data estimata livrare" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentes">
+            <EntityTypeMapping TypeName="HramulModel.Departamente">
+              <MappingFragment StoreEntitySet="Departamente">
+                <ScalarProperty Name="ID_DEPARTAMENT" ColumnName="ID_DEPARTAMENT" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Depozites">
+            <EntityTypeMapping TypeName="HramulModel.Depozite">
+              <MappingFragment StoreEntitySet="Depozite">
+                <ScalarProperty Name="ID_DEPOZIT" ColumnName="ID_DEPOZIT" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturis">
+            <EntityTypeMapping TypeName="HramulModel.Facturi">
+              <MappingFragment StoreEntitySet="Facturi">
+                <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Furnizoris">
+            <EntityTypeMapping TypeName="HramulModel.Furnizori">
+              <MappingFragment StoreEntitySet="Furnizori">
+                <ScalarProperty Name="ID_FURNIZOR" ColumnName="ID_FURNIZOR" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="CUI" ColumnName="CUI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produses">
+            <EntityTypeMapping TypeName="HramulModel.Produse">
+              <MappingFragment StoreEntitySet="Produse">
+                <ScalarProperty Name="ID_PRODUS" ColumnName="ID_PRODUS" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="Stoc" ColumnName="Stoc" />
+                <ScalarProperty Name="Pret_Unitar" ColumnName="Pret Unitar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State_de_platas">
+            <EntityTypeMapping TypeName="HramulModel.State_de_plata">
+              <MappingFragment StoreEntitySet="State de plata">
+                <ScalarProperty Name="ID_PLATA" ColumnName="ID_PLATA" />
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="TIP_PLATA" ColumnName="TIP_PLATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HramulModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HramulModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cheltuielis">
+            <EntityTypeMapping TypeName="HramulModel.Cheltuieli">
+              <MappingFragment StoreEntitySet="Cheltuieli">
+                <ScalarProperty Name="Bani" ColumnName="Bani" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheltuieliLunares">
+            <EntityTypeMapping TypeName="HramulModel.CheltuieliLunare">
+              <MappingFragment StoreEntitySet="CheltuieliLunare">
+                <ScalarProperty Name="Bani" ColumnName="Bani" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturiEmises">
+            <EntityTypeMapping TypeName="HramulModel.FacturiEmise">
+              <MappingFragment StoreEntitySet="FacturiEmise">
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Bani" ColumnName="Bani" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturiPrimites">
+            <EntityTypeMapping TypeName="HramulModel.FacturiPrimite">
+              <MappingFragment StoreEntitySet="FacturiPrimite">
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Bani" ColumnName="Bani" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salariis">
+            <EntityTypeMapping TypeName="HramulModel.Salarii">
+              <MappingFragment StoreEntitySet="Salarii">
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Functie" ColumnName="Functie" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalariiCurentes">
+            <EntityTypeMapping TypeName="HramulModel.SalariiCurente">
+              <MappingFragment StoreEntitySet="SalariiCurente">
+                <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Functie" ColumnName="Functie" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddOrderPart" FunctionName="HramulModel.Store.AddOrderPart" />
+          <FunctionImportMapping FunctionImportName="BuyItem" FunctionName="HramulModel.Store.BuyItem" />
+          <FunctionImportMapping FunctionImportName="CalculateExpenses" FunctionName="HramulModel.Store.CalculateExpenses" />
+          <FunctionImportMapping FunctionImportName="CalculateProfit" FunctionName="HramulModel.Store.CalculateProfit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HramulModel.CalculateProfit_Result">
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="Castiguri" ColumnName="Castiguri" />
+                <ScalarProperty Name="Cheltuieli" ColumnName="Cheltuieli" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MakeOrder" FunctionName="HramulModel.Store.MakeOrder" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="HramulModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="HramulModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HramulModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="HramulModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HramulModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="HramulModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HramulModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HramulModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HramulModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

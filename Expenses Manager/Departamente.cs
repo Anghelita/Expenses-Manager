@@ -20,7 +20,7 @@ namespace Expenses_Manager
             this.Angajatis = new HashSet<Angajati>();
         }
     
-        public int ID_DEPARTAMENTE { get; set; }
+        public int ID_DEPARTAMENT { get; set; }
         public string Denumire { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
