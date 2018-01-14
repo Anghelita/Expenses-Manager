@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace Expenses_Manager
 {
@@ -40,6 +41,12 @@ namespace Expenses_Manager
         {
             tbPassword.Text = "";
             tbPassword.ForeColor = Color.Black;
+        }
+
+        private void btAchizitii_Click(object sender, EventArgs e)
+        {
+            Form form = new AchizitiiForm();
+            form.Show();
         }
     }
 }

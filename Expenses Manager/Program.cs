@@ -18,7 +18,7 @@ namespace Expenses_Manager
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new MainForm());
-            Application.Run(new AchizitiiForm());
+            //Application.Run(new AchizitiiForm());
         }
     }
 }

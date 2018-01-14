@@ -11,7 +11,7 @@ namespace Expenses_Manager
 {
     using System;
     
-    public partial class CalculateProfit_Result
+    public partial class CalculateProfitOriginal_Result
     {
         public Nullable<decimal> Profit { get; set; }
         public Nullable<decimal> Castiguri { get; set; }
