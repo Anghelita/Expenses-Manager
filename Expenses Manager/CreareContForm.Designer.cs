@@ -78,7 +78,6 @@
             this.btInregistreaza.TabIndex = 4;
             this.btInregistreaza.Text = "Inregistreaza";
             this.btInregistreaza.UseVisualStyleBackColor = true;
-            this.btInregistreaza.Click += new System.EventHandler(this.btInregistreaza_Click);
             // 
             // CreareContForm
             // 

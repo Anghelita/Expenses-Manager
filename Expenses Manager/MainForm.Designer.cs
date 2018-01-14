@@ -151,11 +151,11 @@ namespace Expenses_Manager
             this.lbLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLogin.AutoSize = true;
             this.lbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLogin.Location = new System.Drawing.Point(672, 56);
+            this.lbLogin.Location = new System.Drawing.Point(662, 56);
             this.lbLogin.Name = "lbLogin";
-            this.lbLogin.Size = new System.Drawing.Size(104, 20);
+            this.lbLogin.Size = new System.Drawing.Size(122, 20);
             this.lbLogin.TabIndex = 8;
-            this.lbLogin.Text = "Esti logat ca: ";
+            this.lbLogin.Text = "Nume utilizator: ";
             this.lbLogin.Visible = false;
             // 
             // dataGridViewComenzi
@@ -195,7 +195,7 @@ namespace Expenses_Manager
             // 
             this.btRaport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btRaport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRaport.Location = new System.Drawing.Point(665, 186);
+            this.btRaport.Location = new System.Drawing.Point(665, 160);
             this.btRaport.Name = "btRaport";
             this.btRaport.Size = new System.Drawing.Size(88, 27);
             this.btRaport.TabIndex = 15;
@@ -216,7 +216,7 @@ namespace Expenses_Manager
             // 
             this.btDataBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btDataBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDataBase.Location = new System.Drawing.Point(760, 186);
+            this.btDataBase.Location = new System.Drawing.Point(760, 160);
             this.btDataBase.Name = "btDataBase";
             this.btDataBase.Size = new System.Drawing.Size(88, 27);
             this.btDataBase.TabIndex = 17;
