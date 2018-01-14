@@ -18,21 +18,18 @@ namespace Expenses_Manager
         public Facturi()
         {
             this.Achizitiis = new HashSet<Achizitii>();
-            this.Comanda_Detalii = new HashSet<Comanda_Detalii>();
-            this.Plati_servicii = new HashSet<Plati_servicii>();
+            this.Comenzis = new HashSet<Comenzi>();
         }
     
         public int ID_FACTURA { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
-        public Nullable<int> Nr { get; set; }
+        public int Nr { get; set; }
         public string Tip { get; set; }
         public string Observatii { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Achizitii> Achizitiis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comanda_Detalii> Comanda_Detalii { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plati_servicii> Plati_servicii { get; set; }
+        public virtual ICollection<Comenzi> Comenzis { get; set; }
     }
 }

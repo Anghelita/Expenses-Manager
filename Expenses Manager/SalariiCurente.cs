@@ -12,7 +12,7 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class Salarii
+    public partial class SalariiCurente
     {
         public int ID_ANGAJAT { get; set; }
         public string Nume { get; set; }
@@ -20,6 +20,5 @@ namespace Expenses_Manager
         public string Functie { get; set; }
         public Nullable<double> Rating { get; set; }
         public Nullable<decimal> Salariu { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
     }
 }

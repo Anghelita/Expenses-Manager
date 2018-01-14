@@ -12,14 +12,12 @@ namespace Expenses_Manager
     using System;
     using System.Collections.Generic;
     
-    public partial class Salarii
+    public partial class sysdiagram
     {
-        public int ID_ANGAJAT { get; set; }
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
-        public string Functie { get; set; }
-        public Nullable<double> Rating { get; set; }
-        public Nullable<decimal> Salariu { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

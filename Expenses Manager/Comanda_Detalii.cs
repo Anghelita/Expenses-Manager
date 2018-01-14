@@ -17,11 +17,10 @@ namespace Expenses_Manager
         public int ID_COMANDA_DETALII { get; set; }
         public Nullable<int> ID_COMANDA { get; set; }
         public Nullable<int> ID_PRODUS { get; set; }
-        public Nullable<int> ID_FACTURA { get; set; }
+        public Nullable<decimal> Suma { get; set; }
         public Nullable<int> Cantitate { get; set; }
     
         public virtual Comenzi Comenzi { get; set; }
-        public virtual Facturi Facturi { get; set; }
         public virtual Produse Produse { get; set; }
     }
 }
