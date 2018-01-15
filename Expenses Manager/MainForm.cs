@@ -272,8 +272,15 @@ namespace Expenses_Manager
 
         private void btAchizitii_Click(object sender, EventArgs e)
         {
-            Form form = new AchizitiiForm();
-            form.Show();
+            try
+            {
+                Form form = new AchizitiiForm();
+                form.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Oh nu ceva nu a mers cum trebuie!");
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
