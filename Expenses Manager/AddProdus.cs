@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +24,7 @@ namespace Expenses_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Equals(""))
+            if (!Regex.IsMatch(textBox1.Text, "^[A-Z][a-z]*"))
             {
                 MessageBox.Show("Introduceti un nume pentru produs!");
                 return;

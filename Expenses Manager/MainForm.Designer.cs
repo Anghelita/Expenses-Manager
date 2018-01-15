@@ -48,6 +48,7 @@ namespace Expenses_Manager
             this.btRaport = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
             this.btDataBase = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.ssMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComenzi)).BeginInit();
@@ -225,11 +226,22 @@ namespace Expenses_Manager
             this.btDataBase.UseVisualStyleBackColor = true;
             this.btDataBase.Click += new System.EventHandler(this.btDataBase_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(294, 399);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 27);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Add Client";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 452);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btDataBase);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.btRaport);
@@ -277,5 +289,6 @@ namespace Expenses_Manager
         private System.Windows.Forms.Button btRaport;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Button btDataBase;
+        private System.Windows.Forms.Button button1;
     }
 }

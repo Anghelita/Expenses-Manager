@@ -275,5 +275,12 @@ namespace Expenses_Manager
             Form form = new AchizitiiForm();
             form.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddClientForm addClientForm = new AddClientForm();
+            addClientForm.ShowDialog();
+
+        }
     }
 }
