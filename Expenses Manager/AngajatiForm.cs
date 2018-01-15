@@ -23,12 +23,14 @@ namespace Expenses_Manager
         {
             using (var context = new HramulEntities())
             {
-                var results = from a in context.Angajatis
-                              join d in context.Departamentes
-                              on a.ID_DEPARTAMENT equals d.ID_DEPARTAMENT
-                              join aa in context.SalariiCurentes
-                              on a.ID_ANGAJAT equals aa.ID_ANGAJAT
-                              orderby a.Nume
+                var results = from d in context.Departamentes
+                              join a in context.Angajatis
+                              on d.ID_DEPARTAMENT equals a.ID_DEPARTAMENT
+                              join s in context.State_de_platas
+                              on a.ID_ANGAJAT equals s.ID_ANGAJAT
+                              where s.TIP_PLATA.Equals("SALARIU")
+                              where s.Data.Value.Year == DateTime.Today.Year
+                              where s.Data.Value.Month == DateTime.Today.Month
                               select new
                               {
                                   a.ID_ANGAJAT,
@@ -39,7 +41,7 @@ namespace Expenses_Manager
                                   a.Functie,
                                   a.Activ,
                                   d.Denumire,
-                                  aa.Salariu
+                                  s.Suma
                               };
                 dataGridView.DataSource = results.ToList();
 

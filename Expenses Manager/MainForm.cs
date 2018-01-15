@@ -22,6 +22,7 @@ namespace Expenses_Manager
     {
         private bool LOGGED_IN = false;
         private string DEPARTAMENT;
+        private int ID_ANGAJAT;
 
         public MainForm()
         {
@@ -100,6 +101,7 @@ namespace Expenses_Manager
 
                     lbLogin.Visible = true;
                     lbLogin.Text += userName;
+                    btLogout.Visible = true;
 
                     LOGGED_IN = true;
 
@@ -111,6 +113,8 @@ namespace Expenses_Manager
                                    where u.ID_ANGAJAT == user.ID_ANGAJAT
                                    select d.Denumire
                                    ).First();
+
+                    ID_ANGAJAT = (int)user.ID_ANGAJAT;
 
                 }
                 catch(Exception exception)
@@ -272,6 +276,7 @@ namespace Expenses_Manager
 
         private void btAchizitii_Click(object sender, EventArgs e)
         {
+
             try
             {
                 Form form = new AchizitiiForm();
@@ -288,6 +293,53 @@ namespace Expenses_Manager
             AddClientForm addClientForm = new AddClientForm();
             addClientForm.ShowDialog();
 
+
+            if (!LOGGED_IN)
+            {
+                MessageBox.Show("Nu sunteti logat", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!DEPARTAMENT.Equals("Sales"))
+            {
+                MessageBox.Show("Nu sunteti din departamentul de vanzari", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form form = new AchizitiiForm();
+            form.Show();
+
+        }
+
+        private void btComenzi_Click(object sender, EventArgs e)
+        {
+            if (!LOGGED_IN)
+            {
+                MessageBox.Show("Nu sunteti logat", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!DEPARTAMENT.Equals("Management"))
+            {
+                MessageBox.Show("Nu sunteti din departamentul management", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form form = new ComenziForm.ComenziForm(ID_ANGAJAT);
+            form.Show();
+        }
+
+        private void btLogout_Click(object sender, EventArgs e)
+        {
+            LOGGED_IN = false;
+            DEPARTAMENT = "";
+            ID_ANGAJAT = 0;
+
+            tbPassword.Visible = true;
+            tbUserName.Visible = true;
+            btLogin.Visible = true;
+
+            lbLogin.Text = "Nume utilizator: ";
+            lbLogin.Visible = false;
+            btLogout.Visible = false;
         }
     }
 }
