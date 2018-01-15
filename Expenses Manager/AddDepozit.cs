@@ -24,7 +24,7 @@ namespace Expenses_Manager
 
         private void sabeButton_Click(object sender, EventArgs e)
         {
-            if (adresaTextBox.Text.Equals("") || telefonTextBox.Text.Equals(""))
+            if (adresaTextBox.Text.Equals("") || !int.TryParse(telefonTextBox.Text, out int z))
             {
                 MessageBox.Show("Date incorecte!");
                 return;
