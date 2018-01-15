@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,7 +25,7 @@ namespace Expenses_Manager
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(numeTextBox.Text, "^[A-Z][a-z]*") || adresaTextBox.Text.Equals("") || cuiTextBox.Text.Equals(""))
+            if (numeTextBox.Text.Equals("") || adresaTextBox.Text.Equals("") || cuiTextBox.Text.Equals(""))
             {
                 MessageBox.Show("Date incorecte!");
                 return;

@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -89,7 +88,7 @@ namespace Expenses_Manager
             int q;
             decimal n, m;
 
-            if (!Regex.IsMatch(numeProdusComboBox.Text, "^[A-Z][a-z]*"))
+            if (numeProdusComboBox.Text.Equals(""))
             {
                 MessageBox.Show("Introduceti un nume pentru produs!");
                 return;
